@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/</loc>
+         <loc>https://docs.mirascope.io/latest/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/CONTRIBUTING/</loc>
+         <loc>https://docs.mirascope.io/latest/CONTRIBUTING/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/HELP/</loc>
+         <loc>https://docs.mirascope.io/latest/HELP/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/enums/</loc>
+         <loc>https://docs.mirascope.io/latest/api/enums/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/prompts/</loc>
+         <loc>https://docs.mirascope.io/latest/api/prompts/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/chat/</loc>
+         <loc>https://docs.mirascope.io/latest/api/chat/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/chat/models/</loc>
+         <loc>https://docs.mirascope.io/latest/api/chat/models/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/chat/types/</loc>
+         <loc>https://docs.mirascope.io/latest/api/chat/types/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/chat/utils/</loc>
+         <loc>https://docs.mirascope.io/latest/api/chat/utils/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/cli/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/cli/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/commands/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/commands/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/constants/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/constants/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/generic/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/generic/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/schemas/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/schemas/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/api/cli/utils/</loc>
+         <loc>https://docs.mirascope.io/latest/api/cli/utils/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/concepts/llm_convenience_wrappers/</loc>
+         <loc>https://docs.mirascope.io/latest/concepts/llm_convenience_wrappers/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/concepts/mirascope_cli/</loc>
+         <loc>https://docs.mirascope.io/latest/concepts/mirascope_cli/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/concepts/pydantic_prompts/</loc>
+         <loc>https://docs.mirascope.io/latest/concepts/pydantic_prompts/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/cookbook/chaining/</loc>
+         <loc>https://docs.mirascope.io/latest/cookbook/chaining/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/cookbook/movie_bot/</loc>
+         <loc>https://docs.mirascope.io/latest/cookbook/movie_bot/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mirascope.github.io/mirascope/latest/cookbook/simple_call/</loc>
+         <loc>https://docs.mirascope.io/latest/cookbook/simple_call/</loc>
          <lastmod>2023-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
