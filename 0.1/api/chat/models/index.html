@@ -720,6 +720,8 @@
       
         
       
+        
+      
     
     
     
@@ -1182,6 +1184,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../enums/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enums
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../prompts/" class="md-nav__link">
         
   
@@ -1399,8 +1422,7 @@
 <span class="normal"><a href="#__codelineno-0-67">67</a></span>
 <span class="normal"><a href="#__codelineno-0-68">68</a></span>
 <span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">class</span> <span class="nc">OpenAIChat</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">class</span> <span class="nc">OpenAIChat</span><span class="p">:</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A convenience wrapper for the OpenAI Chat client.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a>
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -1413,54 +1435,53 @@
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a>
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">        Args:</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">            prompt: The `Prompt` to use for the call.</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">            stream: Whether or not to stream the response.</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">                find available keyword arguments here:</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">            A `OpenAIChatCompletion` instance.</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">            Re-raises any exceptions thrown by the openai chat completions create call.</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>            <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>                <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                    <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>                    <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>                    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>                <span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="p">)</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="k">except</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>            <span class="k">raise</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">OpenAIChatCompletionChunk</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Streams the response for a call to the model using `prompt`.</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">            prompt: The `Prompt` to use for the call.</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">                find available keyword arguments here:</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        Yields:</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">            A `OpenAIChatCompletionChunk` for each chunk of the response.</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">            Re-raises any exceptions thrown by the openai chat completions create call.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="p">)</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>            <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span><span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">                find available keyword arguments here:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">            A `OpenAIChatCompletion` instance.</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">            Re-raises any exceptions thrown by the openai chat completions create call.</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>            <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>                <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>                    <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                    <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>                    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>                <span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="k">except</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>            <span class="k">raise</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">OpenAIChatCompletionChunk</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Streams the response for a call to the model using `prompt`.</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">            prompt: The `Prompt` to use for the call.</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">                find available keyword arguments here:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        Yields:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            A `OpenAIChatCompletionChunk` for each chunk of the response.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">            Re-raises any exceptions thrown by the openai chat completions create call.</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>            <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span><span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1551,19 +1572,6 @@
           </td>
         </tr>
         <tr>
-          <td><code>stream</code></td>
-          <td>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Whether or not to stream the response.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
           <td><code>**kwargs</code></td>
           <td>
           </td>
@@ -1632,34 +1640,32 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 <span class="normal"><a href="#__codelineno-0-41">41</a></span>
 <span class="normal"><a href="#__codelineno-0-42">42</a></span>
 <span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAIChatCompletion</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAIChatCompletion</span><span class="p">:</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a call to the model using `prompt`.</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a>
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    Args:</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        prompt: The `Prompt` to use for the call.</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        stream: Whether or not to stream the response.</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">            find available keyword arguments here:</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        A `OpenAIChatCompletion` instance.</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">        Re-raises any exceptions thrown by the openai chat completions create call.</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>        <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>                <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>                <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="p">)</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="k">except</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="k">raise</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">            find available keyword arguments here:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        A `OpenAIChatCompletion` instance.</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        Re-raises any exceptions thrown by the openai chat completions create call.</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>            <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>                <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>            <span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="k">except</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="k">raise</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1753,7 +1759,8 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/chat/models.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-47">47</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
 <span class="normal"><a href="#__codelineno-0-48">48</a></span>
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
 <span class="normal"><a href="#__codelineno-0-50">50</a></span>
@@ -1776,32 +1783,31 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 <span class="normal"><a href="#__codelineno-0-67">67</a></span>
 <span class="normal"><a href="#__codelineno-0-68">68</a></span>
 <span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">OpenAIChatCompletionChunk</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Streams the response for a call to the model using `prompt`.</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        prompt: The `Prompt` to use for the call.</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">            find available keyword arguments here:</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">    Yields:</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        A `OpenAIChatCompletionChunk` for each chunk of the response.</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        Re-raises any exceptions thrown by the openai chat completions create call.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>    <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="p">)</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span><span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">Prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">OpenAIChatCompletionChunk</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Streams the response for a call to the model using `prompt`.</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        prompt: The `Prompt` to use for the call.</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            find available keyword arguments here:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">    Yields:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        A `OpenAIChatCompletionChunk` for each chunk of the response.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        Re-raises any exceptions thrown by the openai chat completions create call.</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>        <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span><span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
