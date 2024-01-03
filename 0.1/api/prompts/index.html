@@ -1175,6 +1175,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#mirascope.prompts.Prompt.messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mirascope.prompts.Prompt.__str__" class="md-nav__link">
     <span class="md-ellipsis">
       __str__()
@@ -1286,6 +1295,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#mirascope.prompts.Prompt.messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mirascope.prompts.Prompt.__str__" class="md-nav__link">
     <span class="md-ellipsis">
       __str__()
@@ -1353,7 +1371,7 @@
   
 
 
-<h1 id="prompts">prompts</h1>
+<h1 id="prompts">prompts<a class="headerlink" href="#prompts" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -1385,7 +1403,7 @@
           <code>Prompt</code>
 
 
-</h2>
+<a href="#mirascope.prompts.Prompt" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1439,7 +1457,12 @@
 <span class="normal"><a href="#__codelineno-0-53">53</a></span>
 <span class="normal"><a href="#__codelineno-0-54">54</a></span>
 <span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">class</span> <span class="nc">Prompt</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">class</span> <span class="nc">Prompt</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A Pydantic model for prompts.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="nd">@classmethod</span>
@@ -1472,16 +1495,21 @@
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="p">]</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">template_vars</span><span class="p">})</span>
 <a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the prompt to the given filepath.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="k">def</span> <span class="nf">messages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the docstring as a list of messages.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>        <span class="k">return</span> <span class="p">[(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))]</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="nd">@classmethod</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Prompt</span><span class="p">:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads the prompt from the given filepath.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>            <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the prompt to the given filepath.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Prompt</span><span class="p">:</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads the prompt from the given filepath.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>            <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1495,6 +1523,28 @@
 
 
 
+<div class="doc doc-object doc-attribute">
+
+
+
+
+<h3 id="mirascope.prompts.Prompt.messages" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#mirascope.prompts.Prompt.messages" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns the docstring as a list of messages.</p>
+  </div>
+
+</div>
+
 
 
 
@@ -1506,7 +1556,7 @@
 <h3 id="mirascope.prompts.Prompt.__str__" class="doc doc-heading">
           <code class="highlight language-python"><span class="fm">__str__</span><span class="p">()</span></code>
 
-</h3>
+<a href="#mirascope.prompts.Prompt.__str__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1547,7 +1597,7 @@
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+<a href="#mirascope.prompts.Prompt.load" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1556,15 +1606,15 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/prompts.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="nd">@classmethod</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Prompt</span><span class="p">:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads the prompt from the given filepath.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Prompt</span><span class="p">:</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads the prompt from the given filepath.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1580,7 +1630,7 @@
 <h3 id="mirascope.prompts.Prompt.save" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">save</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span></code>
 
-</h3>
+<a href="#mirascope.prompts.Prompt.save" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1589,13 +1639,13 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/prompts.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Saves the prompt to the given filepath.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Saves the prompt to the given filepath.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1615,7 +1665,7 @@
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
 
-</h3>
+<a href="#mirascope.prompts.Prompt.template" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1718,7 +1768,7 @@ number of newline characters, simply include one extra.</p>
 <h2 id="mirascope.prompts.messages" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">messages</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span></code>
 
-</h2>
+<a href="#mirascope.prompts.messages" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1789,12 +1839,7 @@ This would be the user message content.
 
           <details class="quote">
             <summary>Source code in <code>mirascope/prompts.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
 <span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
 <span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
 <span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
@@ -1829,47 +1874,52 @@ This would be the user message content.
 <span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
 <span class="normal"><a href="#__codelineno-0-100">100</a></span>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="k">def</span> <span class="nf">messages</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator for adding a `messages` class attribute to a `Prompt`.</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">    Adding this decorator to a `Prompt` adds a `messages` class attribute</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    that parses the docstring as a list of messages. Each message is a tuple containing</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">    the role and the content. The docstring should have the following format:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        &lt;role&gt;:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        &lt;content&gt;</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    For example, you might want to first include a system prompt followed by a user</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">    prompt, which you can structure as follows:</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        SYSTEM:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        This would be the system message content.</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">        USER:</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">        This would be the user message content.</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">        A list of tuples `(role, content)` parsed from the docstring.</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">        ValueError: If the docstring is empty.</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>    <span class="k">def</span> <span class="nf">messages_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the docstring as a list of messages.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`Prompt` must have a prompt template docstring.&quot;</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="k">def</span> <span class="nf">messages</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator for adding a `messages` class attribute to a `Prompt`.</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">    Adding this decorator to a `Prompt` adds a `messages` class attribute</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">    that parses the docstring as a list of messages. Each message is a tuple containing</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    the role and the content. The docstring should have the following format:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">        &lt;role&gt;:</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        &lt;content&gt;</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">    For example, you might want to first include a system prompt followed by a user</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">    prompt, which you can structure as follows:</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">        SYSTEM:</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">        This would be the system message content.</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">        USER:</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">        This would be the user message content.</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">        A list of tuples `(role, content)` parsed from the docstring.</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">        ValueError: If the docstring is empty.</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-92" name="__codelineno-0-92"></a>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>            <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>            <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a>                <span class="sa">r</span><span class="s2">&quot;(SYSTEM|USER|ASSISTANT): ((.|\n)+?)(?=\n(SYSTEM|USER|ASSISTANT):|\Z)&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a>                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>            <span class="p">)</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="p">]</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">messages_fn</span><span class="p">))</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="k">def</span> <span class="nf">messages_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the docstring as a list of messages.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`Prompt` must have a prompt template docstring.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>        <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>            <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>            <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>                <span class="sa">r</span><span class="s2">&quot;(SYSTEM|USER|ASSISTANT): ((.|\n)+?)(?=\n(SYSTEM|USER|ASSISTANT):|\Z)&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>            <span class="p">)</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="p">]</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">messages_fn</span><span class="p">))</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>

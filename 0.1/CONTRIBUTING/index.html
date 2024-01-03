@@ -1317,8 +1317,8 @@
   
 
 
-<h1 id="contributing">Contributing</h1>
-<h2 id="setting-up-development-environment">Setting Up Development Environment</h2>
+<h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h1>
+<h2 id="setting-up-development-environment">Setting Up Development Environment<a class="headerlink" href="#setting-up-development-environment" title="Permanent link">&para;</a></h2>
 <p>We use <a href="https://python-poetry.org/">poetry</a> as our package and dependency manager.</p>
 <p>To create a virtual environment for development, run the following in your shell:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>poetry
@@ -1326,7 +1326,7 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>poetry<span class="w"> </span>install<span class="w"> </span>--with<span class="w"> </span>dev
 </code></pre></div>
 <p>Simply use <code>exit</code> to deactivate the environment. The next time you call <code>poetry shell</code> the environment will already be setup and ready to go.</p>
-<h2 id="development-workflow">Development Workflow</h2>
+<h2 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Search through existing <a href="https://github.com/Mirascope/mirascope/issues">GitHub Issues</a> to see if what you want to work on has already been added.</p>
@@ -1353,8 +1353,8 @@
 <ul>
 <li>Make sure you are in sync with the main repo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>dev
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>main
 </code></pre></div>
 <ul>
 <li>Create a <code>git</code> feature branch with a meaningful name where you will add your contributions.</li>
@@ -1399,12 +1399,12 @@
 </ul>
 </li>
 </ol>
-<h3 id="pull-requests">Pull Requests</h3>
+<h3 id="pull-requests">Pull Requests<a class="headerlink" href="#pull-requests" title="Permanent link">&para;</a></h3>
 <p>Please conform to the <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> specification for all PR titles and commits.</p>
-<h2 id="testing">Testing</h2>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>All changes to the codebase must be properly unit tested. If a change requires updating an existing unit test, make sure to think through if the change is breaking.</p>
 <p>We use <code>pytest</code> as our testing framework. If you haven't worked with it before, take a look at <a href="https://docs.pytest.org/">their docs</a>.</p>
-<h2 id="formatting-and-linting">Formatting and Linting</h2>
+<h2 id="formatting-and-linting">Formatting and Linting<a class="headerlink" href="#formatting-and-linting" title="Permanent link">&para;</a></h2>
 <p>In an effort to keep the codebase clean and easy to work with, we use <code>ruff</code> for formatting and both <code>ruff</code> and <code>mypy</code> for linting. Before sending any PR for review, make sure to run both <code>ruff</code> and <code>mypy</code>.</p>
 <p>If you are using VS Code, then install the extensions in <code>.vscode/extensions.json</code> and the workspace settings should automatically run <code>ruff</code> formatting on save and show <code>ruff</code> and <code>mypy</code> errors.</p>
 

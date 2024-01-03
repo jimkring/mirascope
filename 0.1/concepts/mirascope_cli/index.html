@@ -1317,9 +1317,9 @@
   
 
 
-<h1 id="mirascope-cli">Mirascope CLI</h1>
+<h1 id="mirascope-cli">Mirascope CLI<a class="headerlink" href="#mirascope-cli" title="Permanent link">&para;</a></h1>
 <p>One of the main frustrations of dealing with prompts is keeping track of all the various versions. Taking inspiration from alembic and git, the mirascope cli provides a couple of key pieces of functionality to make managing prompts easier.</p>
-<h2 id="the-prompt-management-environment">The prompt management environment</h2>
+<h2 id="the-prompt-management-environment">The prompt management environment<a class="headerlink" href="#the-prompt-management-environment" title="Permanent link">&para;</a></h2>
 <p>The first step to using the Mirascope CLI is to use the <code>init</code> command in your project's root directory.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mirascope init
 </code></pre></div>
@@ -1349,7 +1349,7 @@ Here is a sample structure created by the <code>init</code> function:
 <p>The directory names can be changed anytime by modifying the <code>mirascope.ini</code> file or when running the <code>init</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mirascope<span class="w"> </span>init<span class="w"> </span>--mirascope_location<span class="w"> </span>my_mirascope<span class="w"> </span>--prompts_location<span class="w"> </span>my_prompts
 </code></pre></div>
-<h3 id="saving-your-first-prompt">Saving your first prompt</h3>
+<h3 id="saving-your-first-prompt">Saving your first prompt<a class="headerlink" href="#saving-your-first-prompt" title="Permanent link">&para;</a></h3>
 <p>After creating the prompt management directory, you are now ready to build and iterate on some prompts. Begin by adding a Mirascope Prompt to the prompts directory.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># prompts/my_prompt.py</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">Prompt</span>
@@ -1381,7 +1381,7 @@ Here is a sample structure created by the <code>init</code> function:
 </code></pre></div>
 <p>The prompt inside the versions directory is almost identical to the prompt inside the prompts directory with a few differences.</p>
 <p>The variables <code>prev_revision_id</code> and <code>revision_id</code> will be used for features coming soon, so stay tuned for updates.</p>
-<h3 id="iterating-on-the-prompt">Iterating on the prompt</h3>
+<h3 id="iterating-on-the-prompt">Iterating on the prompt<a class="headerlink" href="#iterating-on-the-prompt" title="Permanent link">&para;</a></h3>
 <p>Now that this version of <code>my_prompt</code> has been saved, you are now free to modify the original <code>my_prompt.py</code> and iterate. Maybe, you want to add a system message to obtain advice from a professional.</p>
 <p>Here is what the next iteration of <code>my_prompt.py</code> will look like:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># prompts/my_prompt.py</span>
@@ -1390,10 +1390,10 @@ Here is a sample structure created by the <code>init</code> function:
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nd">@messages</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">class</span> <span class="nc">BookRecommendationPrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="sd">        SYSTEM:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="sd">        You are an expert in your field giving advice</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="sd">    SYSTEM:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="sd">    You are an expert in your field giving advice</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="sd">        USER:</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="sd">    USER:</span>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sd">    Can you recommend some books on {topic} in a list format?</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
@@ -1408,14 +1408,14 @@ Here is a sample structure created by the <code>init</code> function:
 </code></pre></div>
 <p>Note that status will be checked before the <code>add</code> or <code>use</code> command is run.
 Now we can run the same <code>add</code> command in the previous section to commit another version <code>0002_my_prompt.py</code></p>
-<h3 id="switching-between-versions">Switching between versions</h3>
+<h3 id="switching-between-versions">Switching between versions<a class="headerlink" href="#switching-between-versions" title="Permanent link">&para;</a></h3>
 <p>Often times when prompt engineering, you will want to try out different models with different prompts to obtain the best results.</p>
 <p>You can use the <code>use</code> command to quickly switch between the prompts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mirascope<span class="w"> </span>use<span class="w"> </span>my_prompt<span class="w"> </span><span class="m">0001</span>
 </code></pre></div>
 <p>Here you specify which prompt and also which version you want to use. This will update your <code>prompts/my_prompt.py</code> with the contents of <code>versions/0001_my_prompt.py</code> (minus the variables used internally).</p>
 <p>This will let you quickly swap prompts with no code change, the exception being when prompts have different properties.</p>
-<h3 id="future-updates">Future updates</h3>
+<h3 id="future-updates">Future updates<a class="headerlink" href="#future-updates" title="Permanent link">&para;</a></h3>
 <p>There is a lot more to be added to the Mirascope CLI. Here is a list in no order of things we are thinking about adding next: </p>
 <ul>
 <li>prompt comparison - A way to compare two different versions with a golden test</li>

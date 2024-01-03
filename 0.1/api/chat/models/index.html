@@ -1321,7 +1321,7 @@
   
 
 
-<h1 id="chatmodels">chat.models</h1>
+<h1 id="chatmodels">chat.models<a class="headerlink" href="#chatmodels" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -1353,7 +1353,7 @@
           <code>OpenAIChat</code>
 
 
-</h2>
+<a href="#mirascope.chat.models.OpenAIChat" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1449,7 +1449,7 @@
 <a id="__codelineno-0-35" name="__codelineno-0-35"></a>            <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
 <a id="__codelineno-0-36" name="__codelineno-0-36"></a>                <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-37" name="__codelineno-0-37"></a>                    <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                    <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                    <span class="n">messages</span><span class="o">=</span><span class="n">get_openai_chat_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39"></a>                    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40"></a>                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41"></a>                <span class="p">)</span>
@@ -1476,7 +1476,7 @@
 <a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        &quot;&quot;&quot;</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">get_openai_chat_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
 <a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <a id="__codelineno-0-67" name="__codelineno-0-67"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="p">)</span>
@@ -1506,7 +1506,7 @@
 <h3 id="mirascope.chat.models.OpenAIChat.__init__" class="doc doc-heading">
           <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;gpt-3.5-turbo&#39;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-</h3>
+<a href="#mirascope.chat.models.OpenAIChat.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1537,7 +1537,7 @@
 <h3 id="mirascope.chat.models.OpenAIChat.create" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
-</h3>
+<a href="#mirascope.chat.models.OpenAIChat.create" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1659,7 +1659,7 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 <a id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
 <a id="__codelineno-0-36" name="__codelineno-0-36"></a>            <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-37" name="__codelineno-0-37"></a>                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>                <span class="n">messages</span><span class="o">=</span><span class="n">get_openai_chat_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39"></a>                <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40"></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41"></a>            <span class="p">)</span>
@@ -1681,7 +1681,7 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 <h3 id="mirascope.chat.models.OpenAIChat.stream" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">stream</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
-</h3>
+<a href="#mirascope.chat.models.OpenAIChat.stream" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -1802,7 +1802,7 @@ https://platform.openai.com/docs/api-reference/chat/create</p>
 <a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">get_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">get_openai_chat_messages</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
 <a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="p">)</span>

@@ -1317,9 +1317,9 @@
   
 
 
-<h1 id="pydantic-prompts">Pydantic Prompts</h1>
+<h1 id="pydantic-prompts">Pydantic Prompts<a class="headerlink" href="#pydantic-prompts" title="Permanent link">&para;</a></h1>
 <p>The <a href="../../api/prompts/#mirascope.prompts.Prompt"><code>Prompt</code></a> class is the core of Mirascope, which extends Pydantic's <a href="https://docs.pydantic.dev/latest/api/base_model/"><code>BaseModel</code></a>. The class leverages the power of python to make writing more complex prompts as easy and readable as possible. The docstring is automatically formatted as a prompt so that you can write prompts in the style of your codebase.</p>
-<h2 id="why-should-you-care">Why should you care?</h2>
+<h2 id="why-should-you-care">Why should you care?<a class="headerlink" href="#why-should-you-care" title="Permanent link">&para;</a></h2>
 <ul>
 <li>You get all of the <a href="https://docs.pydantic.dev/latest/#why-use-pydantic">benefits of using Pydantic</a>:<ul>
 <li>type hints, json schema, customization, ecosystem, production-grade</li>
@@ -1342,7 +1342,7 @@
 </li>
 <li><strong>All of the above helps lead to production ready code</strong></li>
 </ul>
-<h2 id="the-prompt-class">The <a href="../../api/prompts/#mirascope.prompts.Prompt"><code>Prompt</code></a> Class</h2>
+<h2 id="the-prompt-class">The <a href="../../api/prompts/#mirascope.prompts.Prompt"><code>Prompt</code></a> Class<a class="headerlink" href="#the-prompt-class" title="Permanent link">&para;</a></h2>
 <p>The docstring of the class acts as the prompt's template, and the attributes act as the template variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">Prompt</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1375,7 +1375,7 @@
 <p class="admonition-title">Note</p>
 <p>If you want custom docstring formatting or none at all, simply override the <code>template</code> method.</p>
 </div>
-<h3 id="template-variables">Template Variables</h3>
+<h3 id="template-variables">Template Variables<a class="headerlink" href="#template-variables" title="Permanent link">&para;</a></h3>
 <p>When you call <code>str(prompt)</code> the template will be formatted using the properties of the class that match the template variables. This means that you can define more complex properties through code. This is particularly useful when you want to inject template variables with custom formatting or template variables that depend on multiple attributes. </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">Prompt</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
@@ -1392,16 +1392,18 @@
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="nd">@property</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="k">def</span> <span class="nf">topics_x_genres</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns `topics` as a comma separated list.&quot;&quot;&quot;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>                <span class="sa">f</span><span class="s2">&quot;Topic: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">, Genre: </span><span class="si">{</span><span class="n">genre</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">topics</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>                <span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">genre</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="p">])</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">prompt</span> <span class="o">=</span> <span class="n">BookRecommendationPrompt</span><span class="p">(</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="n">topics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;coding&quot;</span><span class="p">,</span> <span class="s2">&quot;music&quot;</span><span class="p">],</span> <span class="n">genres</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fiction&quot;</span><span class="p">,</span> <span class="s2">&quot;fantasy&quot;</span><span class="p">]</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">)</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="p">[</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                <span class="sa">f</span><span class="s2">&quot;Topic: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">, Genre: </span><span class="si">{</span><span class="n">genre</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>                <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">topics</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>                <span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">genres</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="p">]</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="p">)</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="n">prompt</span> <span class="o">=</span> <span class="n">BookRecommendationPrompt</span><span class="p">(</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="n">topics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;coding&quot;</span><span class="p">,</span> <span class="s2">&quot;music&quot;</span><span class="p">],</span> <span class="n">genres</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fiction&quot;</span><span class="p">,</span> <span class="s2">&quot;fantasy&quot;</span><span class="p">]</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="p">)</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Can you recommend some books on the following topic and genre pairs?
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    Topic: coding, Genre: fiction
@@ -1409,11 +1411,15 @@
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    Topic: music, Genre: fiction
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    Topic: music, Genre fantasy
 </code></pre></div>
-<h3 id="messages">Messages</h3>
+<h3 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h3>
 <p>By default, the <code>Prompt</code> class treats the prompt template as a single user message. If you want to specify a list of messages instead, we provide a decorator to make this easy:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">mirascope.prompts</span> <span class="kn">import</span> <span class="n">messages</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>@messages</code> decorator adds <code>messages</code> property to the class</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">messages</span><span class="p">,</span> <span class="n">Prompt</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nd">@messages</span>  <span class="c1"># decorator adds `messages` property to the class</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nd">@messages</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">class</span> <span class="nc">BookRecommendationPrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="sd">    SYSTEM:</span>
@@ -1426,11 +1432,11 @@
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">prompt</span> <span class="o">=</span> <span class="n">BookRecommendationPrompt</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="s2">&quot;coding&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">prompt</span><span class="o">.</span><span class="n">messages</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">prompt</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[(&quot;system&quot;, &quot;You are the world&#39;s greatest librarian&quot;), (&quot;user&quot;, &quot;Can you recommend some books on coding?&quot;)]
 </code></pre></div>
-<h3 id="future-updates">Future updates</h3>
+<h3 id="future-updates">Future updates<a class="headerlink" href="#future-updates" title="Permanent link">&para;</a></h3>
 <p>There is a lot more to be added to Mirascope prompts. Here is a list in no order of things we are thinking about adding next: </p>
 <ul>
 <li>more complex prompts - handle more complex prompts for things like history</li>

@@ -1309,7 +1309,7 @@
   
 
 
-<h1 id="clicommands">cli.commands</h1>
+<h1 id="clicommands">cli.commands<a class="headerlink" href="#clicommands" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -1344,7 +1344,7 @@ use, and init. See the documentation for each command for more information.</p>
 <h2 id="mirascope.cli.commands.add" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">add</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></code>
 
-</h2>
+<a href="#mirascope.cli.commands.add" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1564,7 +1564,7 @@ new revision.</p>
 <h2 id="mirascope.cli.commands.init" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></code>
 
-</h2>
+<a href="#mirascope.cli.commands.init" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1572,15 +1572,16 @@ new revision.</p>
       <p>Initializes the mirascope project.</p>
 <p>Creates the project structure and files needed for mirascope to work.</p>
 <p>Initial project structure:
-|
-|-- mirascope.ini
-|-- mirascope
-|   |-- prompt_template.j2
-|   |-- versions/
-|   |   |-- <directory_name>/
-|   |   |   |-- version.txt
-|   |   |   |-- <revision_id>_<directory_name>.py
-|-- prompts/</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>|
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|-- mirascope.ini
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|-- mirascope
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>|   |-- prompt_template.j2
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>|   |-- versions/
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>|   |   |-- &lt;directory_name&gt;/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>|   |   |   |-- version.txt
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|   |   |   |-- &lt;revision_id&gt;_&lt;directory_name&gt;.py
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|-- prompts/
+</code></pre></div></p>
 
 
 
@@ -1676,68 +1677,72 @@ new revision.</p>
 <span class="normal"><a href="#__codelineno-0-246">246</a></span>
 <span class="normal"><a href="#__codelineno-0-247">247</a></span>
 <span class="normal"><a href="#__codelineno-0-248">248</a></span>
-<span class="normal"><a href="#__codelineno-0-249">249</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-188" name="__codelineno-0-188"></a><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-249">249</a></span>
+<span class="normal"><a href="#__codelineno-0-250">250</a></span>
+<span class="normal"><a href="#__codelineno-0-251">251</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-188" name="__codelineno-0-188"></a><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-0-189" name="__codelineno-0-189"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initializes the mirascope project.</span>
 <a id="__codelineno-0-190" name="__codelineno-0-190"></a>
 <a id="__codelineno-0-191" name="__codelineno-0-191"></a><span class="sd">    Creates the project structure and files needed for mirascope to work.</span>
 <a id="__codelineno-0-192" name="__codelineno-0-192"></a>
 <a id="__codelineno-0-193" name="__codelineno-0-193"></a><span class="sd">    Initial project structure:</span>
-<a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="sd">    |</span>
-<a id="__codelineno-0-195" name="__codelineno-0-195"></a><span class="sd">    |-- mirascope.ini</span>
-<a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="sd">    |-- mirascope</span>
-<a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="sd">    |   |-- prompt_template.j2</span>
-<a id="__codelineno-0-198" name="__codelineno-0-198"></a><span class="sd">    |   |-- versions/</span>
-<a id="__codelineno-0-199" name="__codelineno-0-199"></a><span class="sd">    |   |   |-- &lt;directory_name&gt;/</span>
-<a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="sd">    |   |   |   |-- version.txt</span>
-<a id="__codelineno-0-201" name="__codelineno-0-201"></a><span class="sd">    |   |   |   |-- &lt;revision_id&gt;_&lt;directory_name&gt;.py</span>
-<a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="sd">    |-- prompts/</span>
-<a id="__codelineno-0-203" name="__codelineno-0-203"></a>
-<a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="sd">        args: The command line arguments for the `init` command, containing:</span>
-<a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">            - `--mirascope_location`: The root mirascope directory to create.</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">            - `--prompts_location`: The user&#39;s prompts directory.</span>
-<a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a>    <span class="n">destination_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
-<a id="__codelineno-0-210" name="__codelineno-0-210"></a>    <span class="n">mirascope_location</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">mirascope_location</span>
-<a id="__codelineno-0-211" name="__codelineno-0-211"></a>    <span class="n">prompts_location</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">prompts_location</span>
-<a id="__codelineno-0-212" name="__codelineno-0-212"></a>    <span class="n">versions_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mirascope_location</span><span class="p">,</span> <span class="s2">&quot;versions&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-213" name="__codelineno-0-213"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">versions_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-214" name="__codelineno-0-214"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">versions_directory</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-215" name="__codelineno-0-215"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">prompts_location</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-216" name="__codelineno-0-216"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">prompts_location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-217" name="__codelineno-0-217"></a>    <span class="n">prompts_init_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">prompts_location</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-218" name="__codelineno-0-218"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">prompts_init_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-<a id="__codelineno-0-219" name="__codelineno-0-219"></a>        <span class="n">prompts_init_file</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
-<a id="__codelineno-0-220" name="__codelineno-0-220"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">prompts_init_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-221" name="__codelineno-0-221"></a>    <span class="c1"># Create the &#39;mirascope.ini&#39; file in the current directory with some default values</span>
-<a id="__codelineno-0-222" name="__codelineno-0-222"></a>    <span class="n">ini_settings</span> <span class="o">=</span> <span class="n">MirascopeSettings</span><span class="p">(</span>
-<a id="__codelineno-0-223" name="__codelineno-0-223"></a>        <span class="n">mirascope_location</span><span class="o">=</span><span class="n">mirascope_location</span><span class="p">,</span>
-<a id="__codelineno-0-224" name="__codelineno-0-224"></a>        <span class="n">versions_location</span><span class="o">=</span><span class="s2">&quot;versions&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-225" name="__codelineno-0-225"></a>        <span class="n">prompts_location</span><span class="o">=</span><span class="n">prompts_location</span><span class="p">,</span>
-<a id="__codelineno-0-226" name="__codelineno-0-226"></a>        <span class="n">version_file_name</span><span class="o">=</span><span class="s2">&quot;version.txt&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-227" name="__codelineno-0-227"></a>    <span class="p">)</span>
-<a id="__codelineno-0-228" name="__codelineno-0-228"></a>
-<a id="__codelineno-0-229" name="__codelineno-0-229"></a>    <span class="c1"># Get templates from the mirascope.cli.generic package</span>
-<a id="__codelineno-0-230" name="__codelineno-0-230"></a>    <span class="n">generic_file_path</span> <span class="o">=</span> <span class="n">files</span><span class="p">(</span><span class="s2">&quot;mirascope.cli.generic&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-231" name="__codelineno-0-231"></a>    <span class="n">ini_path</span> <span class="o">=</span> <span class="n">generic_file_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;mirascope.ini.j2&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-232" name="__codelineno-0-232"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ini_path</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-<a id="__codelineno-0-233" name="__codelineno-0-233"></a>        <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<a id="__codelineno-0-234" name="__codelineno-0-234"></a>        <span class="n">rendered_content</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">ini_settings</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
-<a id="__codelineno-0-235" name="__codelineno-0-235"></a>        <span class="n">destination_file_path</span> <span class="o">=</span> <span class="n">destination_dir</span> <span class="o">/</span> <span class="s2">&quot;mirascope.ini&quot;</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">destination_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">destination_file</span><span class="p">:</span>
-<a id="__codelineno-0-237" name="__codelineno-0-237"></a>            <span class="n">destination_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered_content</span><span class="p">)</span>
-<a id="__codelineno-0-238" name="__codelineno-0-238"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a>
-<a id="__codelineno-0-240" name="__codelineno-0-240"></a>    <span class="c1"># Create the &#39;prompt_template.j2&#39; file in the mirascope directory specified by user</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a>    <span class="n">prompt_template_path</span> <span class="o">=</span> <span class="n">generic_file_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;prompt_template.j2&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prompt_template_path</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<a id="__codelineno-0-244" name="__codelineno-0-244"></a>    <span class="n">template_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mirascope_location</span><span class="p">,</span> <span class="s2">&quot;prompt_template.j2&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-245" name="__codelineno-0-245"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-<a id="__codelineno-0-246" name="__codelineno-0-246"></a>        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-<a id="__codelineno-0-247" name="__codelineno-0-247"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">template_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-248" name="__codelineno-0-248"></a>
-<a id="__codelineno-0-249" name="__codelineno-0-249"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initialization complete.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-195" name="__codelineno-0-195"></a><span class="sd">    |</span>
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="sd">    |-- mirascope.ini</span>
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="sd">    |-- mirascope</span>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a><span class="sd">    |   |-- prompt_template.j2</span>
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a><span class="sd">    |   |-- versions/</span>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="sd">    |   |   |-- &lt;directory_name&gt;/</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a><span class="sd">    |   |   |   |-- version.txt</span>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="sd">    |   |   |   |-- &lt;revision_id&gt;_&lt;directory_name&gt;.py</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="sd">    |-- prompts/</span>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">        args: The command line arguments for the `init` command, containing:</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">            - `--mirascope_location`: The root mirascope directory to create.</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">            - `--prompts_location`: The user&#39;s prompts directory.</span>
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a>    <span class="n">destination_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a>    <span class="n">mirascope_location</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">mirascope_location</span>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a>    <span class="n">prompts_location</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">prompts_location</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a>    <span class="n">versions_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mirascope_location</span><span class="p">,</span> <span class="s2">&quot;versions&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">versions_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">versions_directory</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">prompts_location</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">prompts_location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a>    <span class="n">prompts_init_file</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">prompts_location</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">prompts_init_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a>        <span class="n">prompts_init_file</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">prompts_init_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a>    <span class="c1"># Create the &#39;mirascope.ini&#39; file in the current directory with some default values</span>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a>    <span class="n">ini_settings</span> <span class="o">=</span> <span class="n">MirascopeSettings</span><span class="p">(</span>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a>        <span class="n">mirascope_location</span><span class="o">=</span><span class="n">mirascope_location</span><span class="p">,</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a>        <span class="n">versions_location</span><span class="o">=</span><span class="s2">&quot;versions&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a>        <span class="n">prompts_location</span><span class="o">=</span><span class="n">prompts_location</span><span class="p">,</span>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a>        <span class="n">version_file_name</span><span class="o">=</span><span class="s2">&quot;version.txt&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a>    <span class="p">)</span>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a>    <span class="c1"># Get templates from the mirascope.cli.generic package</span>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a>    <span class="n">generic_file_path</span> <span class="o">=</span> <span class="n">files</span><span class="p">(</span><span class="s2">&quot;mirascope.cli.generic&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>    <span class="n">ini_path</span> <span class="o">=</span> <span class="n">generic_file_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;mirascope.ini.j2&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ini_path</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a>        <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a>        <span class="n">rendered_content</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">ini_settings</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>        <span class="n">destination_file_path</span> <span class="o">=</span> <span class="n">destination_dir</span> <span class="o">/</span> <span class="s2">&quot;mirascope.ini&quot;</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">destination_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">destination_file</span><span class="p">:</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a>            <span class="n">destination_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered_content</span><span class="p">)</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>    <span class="c1"># Create the &#39;prompt_template.j2&#39; file in the mirascope directory specified by user</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>    <span class="n">prompt_template_path</span> <span class="o">=</span> <span class="n">generic_file_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;prompt_template.j2&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prompt_template_path</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a>        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>    <span class="n">template_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mirascope_location</span><span class="p">,</span> <span class="s2">&quot;prompt_template.j2&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a>        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating </span><span class="si">{</span><span class="n">destination_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">template_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initialization complete.&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1753,7 +1758,7 @@ new revision.</p>
 <h2 id="mirascope.cli.commands.status" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">status</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></code>
 
-</h2>
+<a href="#mirascope.cli.commands.status" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
@@ -1909,7 +1914,7 @@ is printed.</p>
 <h2 id="mirascope.cli.commands.use" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">use</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></code>
 
-</h2>
+<a href="#mirascope.cli.commands.use" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">

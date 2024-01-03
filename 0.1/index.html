@@ -1254,7 +1254,7 @@
   
 
 
-<h1 id="getting-started-with-mirascope">Getting started with Mirascope</h1>
+<h1 id="getting-started-with-mirascope">Getting started with Mirascope<a class="headerlink" href="#getting-started-with-mirascope" title="Permanent link">&para;</a></h1>
 <p>This library intends to give developers a better way to build with LLMs that integrates seamlessly into your workflow, starting with better prompt management and core LLM interaction calls. We’re building the de facto pythonic prompt templating and LLM-interaction library.</p>
 <hr />
 <p><a href="https://github.com/Mirascope/mirascope/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Mirascope/mirascope.svg" /></a>
@@ -1266,7 +1266,7 @@
 <a href="https://pypi.python.org/pypi/mirascope"><img alt="PyPI version" src="https://img.shields.io/pypi/v/mirascope.svg" /></a>
 <a href="https://pypi.python.org/pypi/mirascope"><img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mirascope.svg" /></a></p>
 <hr />
-<h2 id="why-use-mirascope">Why use Mirascope?</h2>
+<h2 id="why-use-mirascope">Why use Mirascope?<a class="headerlink" href="#why-use-mirascope" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Easy</strong>: Designed for ease of use, Mirascope features an intuitive interface and a minimal learning curve</li>
 <li><strong>Intuitive</strong>: Get editor support for prompts, eliminating the need to dig through documentation</li>
@@ -1274,12 +1274,12 @@
 <li><strong>Integration</strong>: Leveraging Pydantic, Mirascope offers easy integration with JSON Schema and other tools</li>
 <li><strong>Maintainability</strong>: Reduce prompt-related bugs and organize prompts with provided utilities</li>
 </ul>
-<h2 id="installation">Installation</h2>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>Install Mirascope and start building with LLMs in minutes.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mirascope
 </code></pre></div>
 <p>This will install the <code>mirascope</code> package and CLI.</p>
-<h2 id="a-simple-mirascope-example">A Simple Mirascope Example</h2>
+<h2 id="a-simple-mirascope-example">A Simple Mirascope Example<a class="headerlink" href="#a-simple-mirascope-example" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">OpenAIChat</span><span class="p">,</span> <span class="n">Prompt</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span> <span class="nc">BookRecommendationPrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
@@ -1292,7 +1292,7 @@
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">prompt</span> <span class="o">=</span> <span class="n">BookRecommendationPrompt</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="s2">&quot;coding&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">))</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">model</span> <span class="o">=</span> <span class="n">OpenAIChat</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">))</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">model</span> <span class="o">=</span> <span class="n">OpenAIChat</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
 </code></pre></div>
@@ -1300,17 +1300,17 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Certainly! Here are some highly recommended books on coding: ...
 </code></pre></div>
-<h2 id="dive-deeper">Dive Deeper</h2>
+<h2 id="dive-deeper">Dive Deeper<a class="headerlink" href="#dive-deeper" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Check out the concepts section to dive deeper into the library and the core features that make it powerful, such as <a href="concepts/pydantic_prompts/">pydantic prompts</a> and the <a href="concepts/mirascope_cli/">Mirascope CLI</a>.</li>
 <li>You can follow along with more detailed <a href="cookbook/simple_call/">examples</a> to get a better understanding of how to utilize the library to effectively model your data. You can also take a look at <a href="https://github.com/Mirascope/mirascope/tree/main/cookbook">code examples</a> in the repo.</li>
 <li>The <a href="api/prompts/">API Reference</a> contains full details on all classes, methods, functions, etc.</li>
 </ul>
-<h2 id="contributing">Contributing</h2>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <p>Mirascope welcomes contributions from the community! See the <a href="CONTRIBUTING/">contribution guide</a> for more information on the development workflow. For bugs and feature requests, visit our <a href="https://github.com/mirascope/mirascope/issues">GitHub Issues</a> and check out our <a href="https://github.com/Mirascope/mirascope/tree/main/.github/ISSUE_TEMPLATES">templates</a>.</p>
-<h2 id="how-to-help">How To Help</h2>
+<h2 id="how-to-help">How To Help<a class="headerlink" href="#how-to-help" title="Permanent link">&para;</a></h2>
 <p>Any and all help is greatly appreciated! Check out our page on <a href="HELP/">how you can help</a>.</p>
-<h2 id="roadmap-whats-on-our-mind">Roadmap (What's on our mind)</h2>
+<h2 id="roadmap-whats-on-our-mind">Roadmap (What's on our mind)<a class="headerlink" href="#roadmap-whats-on-our-mind" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Agents</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RAG</li>
@@ -1321,9 +1321,9 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Database support for versioning</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Better DX for Mirascope CLI (e.g. autocomplete)</li>
 </ul>
-<h2 id="versioning">Versioning</h2>
+<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
 <p>Mirascope uses <a href="https://semver.org/">Semantic Versioning</a>.</p>
-<h2 id="license">License</h2>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>This project is licensed under the terms of the <a href="https://github.com/Mirascope/mirascope/blob/main/LICENSE">MIT License</a>.</p>
 
 
