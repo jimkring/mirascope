@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1442,8 +1442,7 @@
 <span class="normal"><a href="#__codelineno-0-75">75</a></span>
 <span class="normal"><a href="#__codelineno-0-76">76</a></span>
 <span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">class</span> <span class="nc">OpenAITool</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-78">78</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">class</span> <span class="nc">OpenAITool</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A base class for more easily using tools with the OpenAI Chat client.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">tool_call</span><span class="p">:</span> <span class="n">ChatCompletionMessageToolCall</span>
@@ -1477,40 +1476,39 @@
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="n">fn</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a>                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a>                <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>                    <span class="n">prop</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>                        <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                        <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;default&quot;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;title&quot;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>                    <span class="p">}</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>                    <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">prop_schema</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>                <span class="p">},</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>                <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>                <span class="k">if</span> <span class="s2">&quot;required&quot;</span> <span class="ow">in</span> <span class="n">model_schema</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>                <span class="k">else</span> <span class="p">[],</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>            <span class="p">}</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">ChatCompletionToolParam</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">fn</span><span class="p">})</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="nd">@classmethod</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="k">def</span> <span class="nf">from_tool_call</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">:</span> <span class="n">ChatCompletionMessageToolCall</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAITool</span><span class="p">:</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts an instance of the tool constructed from a tool call response.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">            tool_call: The `ChatCompletionMessageToolCall` to extract the tool from.</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">            An instance of the tool constructed from the tool call.</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">            ValidationError: if the tool call doesn&#39;t match the tool schema.</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>            <span class="n">model_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">e</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="n">model_json</span><span class="p">[</span><span class="s2">&quot;tool_call&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_call</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>                    <span class="n">prop</span><span class="p">:</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>                    <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">prop_schema</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                    <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s2">&quot;tool_call&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                <span class="p">},</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>                <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>                    <span class="n">prop</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s2">&quot;tool_call&quot;</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>                <span class="p">]</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>                <span class="k">if</span> <span class="s2">&quot;required&quot;</span> <span class="ow">in</span> <span class="n">model_schema</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>                <span class="k">else</span> <span class="p">[],</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>            <span class="p">}</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">ChatCompletionToolParam</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">fn</span><span class="p">})</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">def</span> <span class="nf">from_tool_call</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">:</span> <span class="n">ChatCompletionMessageToolCall</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAITool</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts an instance of the tool constructed from a tool call response.</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">            tool_call: The `ChatCompletionMessageToolCall` to extract the tool from.</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">            An instance of the tool constructed from the tool call.</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">            ValidationError: if the tool call doesn&#39;t match the tool schema.</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>            <span class="n">model_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">e</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="n">model_json</span><span class="p">[</span><span class="s2">&quot;tool_call&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_call</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1646,7 +1644,8 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/chat/tools.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-60">60</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
 <span class="normal"><a href="#__codelineno-0-61">61</a></span>
 <span class="normal"><a href="#__codelineno-0-62">62</a></span>
 <span class="normal"><a href="#__codelineno-0-63">63</a></span>
@@ -1664,27 +1663,26 @@
 <span class="normal"><a href="#__codelineno-0-75">75</a></span>
 <span class="normal"><a href="#__codelineno-0-76">76</a></span>
 <span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="nd">@classmethod</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="k">def</span> <span class="nf">from_tool_call</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">:</span> <span class="n">ChatCompletionMessageToolCall</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAITool</span><span class="p">:</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts an instance of the tool constructed from a tool call response.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        tool_call: The `ChatCompletionMessageToolCall` to extract the tool from.</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">        An instance of the tool constructed from the tool call.</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">        ValidationError: if the tool call doesn&#39;t match the tool schema.</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="n">model_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">e</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>    <span class="n">model_json</span><span class="p">[</span><span class="s2">&quot;tool_call&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_call</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>    <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-78">78</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="k">def</span> <span class="nf">from_tool_call</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">:</span> <span class="n">ChatCompletionMessageToolCall</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAITool</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts an instance of the tool constructed from a tool call response.</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        tool_call: The `ChatCompletionMessageToolCall` to extract the tool from.</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        An instance of the tool constructed from the tool call.</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        ValidationError: if the tool call doesn&#39;t match the tool schema.</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="n">model_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span> <span class="kn">from</span> <span class="nn">e</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>    <span class="n">model_json</span><span class="p">[</span><span class="s2">&quot;tool_call&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_call</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>    <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1793,8 +1791,7 @@
 <span class="normal"><a href="#__codelineno-0-54">54</a></span>
 <span class="normal"><a href="#__codelineno-0-55">55</a></span>
 <span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="nd">@classmethod</span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="nd">@classmethod</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="k">def</span> <span class="nf">tool_schema</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChatCompletionToolParam</span><span class="p">:</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructs a tool schema for use with the OpenAI Chat client.</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27"></a>
@@ -1816,19 +1813,18 @@
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="n">fn</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>                <span class="n">prop</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>                    <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                    <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;default&quot;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;title&quot;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>                <span class="p">}</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>                <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">prop_schema</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>            <span class="p">},</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>            <span class="k">if</span> <span class="s2">&quot;required&quot;</span> <span class="ow">in</span> <span class="n">model_schema</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>            <span class="k">else</span> <span class="p">[],</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="p">}</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">ChatCompletionToolParam</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">fn</span><span class="p">})</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>                <span class="n">prop</span><span class="p">:</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>                <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">prop_schema</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s2">&quot;tool_call&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>            <span class="p">},</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>                <span class="n">prop</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">model_schema</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">prop</span> <span class="o">!=</span> <span class="s2">&quot;tool_call&quot;</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>            <span class="p">]</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>            <span class="k">if</span> <span class="s2">&quot;required&quot;</span> <span class="ow">in</span> <span class="n">model_schema</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>            <span class="k">else</span> <span class="p">[],</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="p">}</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">ChatCompletionToolParam</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">fn</span><span class="p">})</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1919,7 +1915,8 @@ an instance of the tool.</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/chat/tools.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
 <span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
 <span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
 <span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
@@ -1937,27 +1934,26 @@ an instance of the tool.</p>
 <span class="normal"><a href="#__codelineno-0-100">100</a></span>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span>
 <span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="k">def</span> <span class="nf">openai_tool_fn</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator for adding a function to a tool class.</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">    Adding this decorator will add an `fn` property to the tool class that returns the</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">    function that the tool describes. This is convenient for calling the function given</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">    an instance of the tool.</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="sd">        fn: The function to add to the tool class.</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        The decorated tool class.</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;A decorator for adding a function to a tool class.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;fn&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="n">fn</span><span class="p">))</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        <span class="k">return</span> <span class="bp">cls</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>    <span class="k">return</span> <span class="n">decorator</span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="k">def</span> <span class="nf">openai_tool_fn</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator for adding a function to a tool class.</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">    Adding this decorator will add an `fn` property to the tool class that returns the</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">    function that the tool describes. This is convenient for calling the function given</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">    an instance of the tool.</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">        fn: The function to add to the tool class.</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="sd">        The decorated tool class.</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;A decorator for adding a function to a tool class.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;fn&quot;</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="n">fn</span><span class="p">))</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>    <span class="k">return</span> <span class="n">decorator</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2109,7 +2105,7 @@ an instance of the tool.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
       
     
   </body>
