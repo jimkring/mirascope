@@ -11,16 +11,16 @@
       
       
       
-        <link rel="canonical" href="https://docs.mirascope.io/latest/api/cli/generic/">
+        <link rel="canonical" href="https://docs.mirascope.io/latest/cookbook/squad_extraction/">
       
       
-        <link rel="prev" href="../constants/">
+        <link rel="prev" href="../basic_examples/">
       
       
-        <link rel="next" href="../schemas/">
+        <link rel="next" href="../rag/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
@@ -29,14 +29,14 @@
 
     
       
-        <title>generic - Mirascope</title>
+        <title>SQuAD Extraction - Mirascope</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cligeneric" class="md-skip">
+        <a href="#squad-20-extracting-answers-to-questions-from-context-using-mirascope" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Mirascope" class="md-header__button md-logo" aria-label="Mirascope" data-md-component="logo">
+    <a href="../.." title="Mirascope" class="md-header__button md-logo" aria-label="Mirascope" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              generic
+              SQuAD Extraction
             
           </span>
         </div>
@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
     
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../concepts/pydantic_prompts/" class="md-tabs__link">
+        <a href="../../concepts/pydantic_prompts/" class="md-tabs__link">
           
   
     
@@ -274,11 +274,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../cookbook/basic_examples/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../basic_examples/" class="md-tabs__link">
           
   
     
@@ -294,21 +296,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../chat/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../api/chat/" class="md-tabs__link">
           
   
     
@@ -352,7 +350,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Mirascope" class="md-nav__button md-logo" aria-label="Mirascope" data-md-component="logo">
+    <a href="../.." title="Mirascope" class="md-nav__button md-logo" aria-label="Mirascope" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -409,7 +407,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -442,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -463,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../HELP/" class="md-nav__link">
+      <a href="../../HELP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -539,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/pydantic_prompts/" class="md-nav__link">
+      <a href="../../concepts/pydantic_prompts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -560,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/llm_convenience_wrappers/" class="md-nav__link">
+      <a href="../../concepts/llm_convenience_wrappers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/mirascope_cli/" class="md-nav__link">
+      <a href="../../concepts/mirascope_cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -606,8 +604,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -624,12 +624,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -643,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Cookbook
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cookbook/basic_examples/" class="md-nav__link">
+      <a href="../basic_examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -675,10 +675,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../cookbook/squad_extraction/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SQuAD Extraction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -687,6 +707,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-basic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Basic Extraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-a-better-prompt-by-analyzing-results-in-oxen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering A Better Prompt By Analyzing Results In Oxen
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -699,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cookbook/rag/" class="md-nav__link">
+      <a href="../rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,10 +782,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -746,12 +802,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -765,7 +821,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             API Reference
@@ -809,7 +865,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../chat/" class="md-nav__link ">
+            <a href="../../api/chat/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -866,7 +922,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../chat/models/" class="md-nav__link ">
+            <a href="../../api/chat/models/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -899,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/models/openai_chat/" class="md-nav__link">
+      <a href="../../api/chat/models/openai_chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -920,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/models/openai_chat_async/" class="md-nav__link">
+      <a href="../../api/chat/models/openai_chat_async/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -973,7 +1029,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../chat/parsers/" class="md-nav__link ">
+            <a href="../../api/chat/parsers/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1006,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/parsers/openai_tool_stream_parser/" class="md-nav__link">
+      <a href="../../api/chat/parsers/openai_tool_stream_parser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1027,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/parsers/openai_tool_stream_parser_async/" class="md-nav__link">
+      <a href="../../api/chat/parsers/openai_tool_stream_parser_async/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1056,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/tools/" class="md-nav__link">
+      <a href="../../api/chat/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/types/" class="md-nav__link">
+      <a href="../../api/chat/types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1098,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chat/utils/" class="md-nav__link">
+      <a href="../../api/chat/utils/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1124,8 +1180,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1149,17 +1203,17 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../api/cli/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1176,7 +1230,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             cli
@@ -1192,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../commands/" class="md-nav__link">
+      <a href="../../api/cli/commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1213,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../constants/" class="md-nav__link">
+      <a href="../../api/cli/constants/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1231,30 +1285,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    generic
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../api/cli/generic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1263,35 +1297,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mirascope.cli.generic" class="md-nav__link">
-    <span class="md-ellipsis">
-      generic
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1304,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schemas/" class="md-nav__link">
+      <a href="../../api/cli/schemas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1325,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../utils/" class="md-nav__link">
+      <a href="../../api/cli/utils/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1354,7 +1359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../enums/" class="md-nav__link">
+      <a href="../../api/enums/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1375,7 +1380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prompts/" class="md-nav__link">
+      <a href="../../api/prompts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,9 +1428,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mirascope.cli.generic" class="md-nav__link">
+  <a href="#initial-basic-extraction" class="md-nav__link">
     <span class="md-ellipsis">
-      generic
+      Initial Basic Extraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-a-better-prompt-by-analyzing-results-in-oxen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering A Better Prompt By Analyzing Results In Oxen
     </span>
   </a>
   
@@ -1449,21 +1463,153 @@
   
 
 
-<h1 id="cligeneric">cli.generic<a class="headerlink" href="#cligeneric" title="Permanent link">&para;</a></h1>
-
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="mirascope.cli.generic"></a>
-  <div class="doc doc-contents first">
-  
-      <p>This package contains generic templates that are used to initialize a mirascope project.</p>
-
-  </div>
-
+<h1 id="squad-20-extracting-answers-to-questions-from-context-using-mirascope">SQuAD 2.0: Extracting Answers To Questions From Context Using Mirascope<a class="headerlink" href="#squad-20-extracting-answers-to-questions-from-context-using-mirascope" title="Permanent link">&para;</a></h1>
+<p>The SQuAD 2.0 Dataset is a dataset for question-answering. Each question is either impossible to answer given the context paragraph or has answers exactly as written in the paragraph. It turns out that it's quite difficult to get an LLM to ignore it's world knowledge and output "<No Answer>" if the paragraph does not contain the answer. For this recipe, we'll be using a modified version of the dataset, restricting our questions to a single article (Geology) and removing all of the impossible questions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a href="https://raw.githubusercontent.com/Mirascope/datasets/main/geology-squad.json"><code>geology-squad.json</code></a> modified version of the dataset is on our GitHub along with the <a href="https://github.com/Mirascope/mirascope/tree/main/cookbook/extraction_examples/squad_extraction">full code</a> for this recipe.</p>
 </div>
+<p>The first step is loading the dataset. We've written a helper function <code>load_geology_squad</code> that will load and return a <code>list[QuestionWithContext]</code>, defined below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span> <span class="nc">QuestionWithContext</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A question with it&#39;s answers and context.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">context</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">answers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="initial-basic-extraction">Initial Basic Extraction<a class="headerlink" href="#initial-basic-extraction" title="Permanent link">&para;</a></h2>
+<p>To extract an answer to a question, we can use the <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.OpenAIChat.extract"><code>OpenAIChat.extract</code></a> method to extract the answer. First, let's create a super basic schema and prompt for asking the question and extracting an answer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>mirascope<span class="w"> </span>init<span class="w"> </span>--prompts_location<span class="w"> </span>squad_prompts<span class="p">;</span><span class="w"> </span>touch<span class="w"> </span>prompts/question.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># squad_prompts/question.py</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">Prompt</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">class</span> <span class="nc">ExtractedAnswer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The answer to a question about a paragraph of text.&quot;&quot;&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">class</span> <span class="nc">QuestionPrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="sd">    Paragraph: {paragraph}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="sd">    Question: {question}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="n">paragraph</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+<p>Next we'll define the schema we want to extract from the paragraph and a function to extract the schema from a given question:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">Settings</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">from</span> <span class="nn">prompts.question</span> <span class="kn">import</span> <span class="n">ExtractedAnswer</span><span class="p">,</span> <span class="n">QuestionPrompt</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">chat</span> <span class="o">=</span> <span class="n">OpenAIChat</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo-1106&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">openai_api_key</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">def</span> <span class="nf">extract_answer</span><span class="p">(</span><span class="n">question</span><span class="p">:</span> <span class="n">QuestionWithContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the extracted `str` answer to `question`.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="k">return</span> <span class="n">chat</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="n">ExtractedAnswer</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="n">QuestionPrompt</span><span class="p">(</span><span class="n">paragraph</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">question</span><span class="p">),</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="n">retries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># retry up to 2 more times on validation error</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="p">)</span><span class="o">.</span><span class="n">answer</span>
+</code></pre></div>
+<p>Now we just need to load the data and extract our answers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">from</span> <span class="nn">squad</span> <span class="kn">import</span> <span class="n">load_geology_squad</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">extracted_answers</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">extract_answer</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="k">for</span> <span class="n">question</span> <span class="ow">in</span> <span class="n">load_geology_squad</span><span class="p">()</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;geology-squad-answers-v1.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">extracted_answers</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+<p>Running the included modified version of the SQuAD eval script gives us the following breakdown on metrics, which we can use to see how well our system is working:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>python<span class="w"> </span>eval.py<span class="w"> </span>geology-squad.json<span class="w"> </span>geology-squad-answers-v1.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>{
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  &quot;exact&quot;: 79.3103448275862,
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  &quot;f1&quot;: 89.4777077966733,
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  &quot;total&quot;: 116,
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>}
+</code></pre></div>
+<p>Exact match is determined with a raw string match, whereas F1 score is calculated by token to account for partial matches. With our simple script, we were able to get nearly 80% exact match and an F1 score of nearly 90 on our 116 examples. Before we move on, let's include this metadata in the docstring of our prompt file and version it with the CLI:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>mirascope<span class="w"> </span>add<span class="w"> </span>question
+</code></pre></div>
+<h2 id="engineering-a-better-prompt-by-analyzing-results-in-oxen">Engineering A Better Prompt By Analyzing Results In Oxen<a class="headerlink" href="#engineering-a-better-prompt-by-analyzing-results-in-oxen" title="Permanent link">&para;</a></h2>
+<p>Now let's make the script even better. To better understand where our LLM is making mistakes, we can upload a transformed version of our data to <a href="https://oxen.ai">Oxen</a> and dig around a little.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a href="https://github.com/Mirascope/mirascope/tree/main/cookbook/extraction_examples/squad_extraction/push_to_oxen.py"><code>push_to_oxen.py</code></a> script shows how we upload each prompt version's answer for analysis.</p>
+</div>
+<p><img alt="Screenshot 2024-02-07 at 8 54 35 PM" src="https://github.com/Mirascope/mirascope/assets/99370834/27ef286c-25db-4647-b42b-20413ebb4bb6" /></p>
+<p>Two things stick out immediately about the extracted answers:</p>
+<ol>
+<li>Often long or a full sentence instead of a short, concise answer.</li>
+<li>Not an exact match with the context paragraph.</li>
+</ol>
+<p>Let's update our schema and our prompt so that the LLM tries to extract more concise answers that better match the context paragraph:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">Prompt</span><span class="p">,</span> <span class="n">messages</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">class</span> <span class="nc">ExtractedAnswer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The answer to a question about a paragraph of text.&quot;&quot;&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        <span class="o">...</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        <span class="n">description</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>            <span class="s2">&quot;The extracted answer to the question. This answer is as concise &quot;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>            <span class="s2">&quot;as possible, most often just a single word. It is also an exact &quot;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>            <span class="s2">&quot;text match with text in the provided context.&quot;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="p">),</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>    <span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="nd">@messages</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="k">class</span> <span class="nc">QuestionPrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="sd">    SYSTEM:</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="sd">    You will be asked a question after you read a paragraph. Your task is to</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="sd">    answer the question based on the information in the paragraph. Your answer</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="sd">    should be an exact text match to text from the paragraph. Your answer should</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="sd">    also be one or two words at most is possible.</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="sd">    USER:</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="sd">    Paragraph: {paragraph}</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="sd">    USER:</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="sd">    Question: {question}</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>    <span class="n">paragraph</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>python<span class="w"> </span>extract_answers.py<span class="w"> </span>v2
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>$<span class="w"> </span>python<span class="w"> </span>eval.py<span class="w"> </span>geology-squad.json<span class="w"> </span>geology-squad-answers-v2.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>{
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  &quot;exact&quot;: 85.34482758620689,
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  &quot;f1&quot;: 91.55579573683022,
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  &quot;total&quot;: 116,
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>mirascope<span class="w"> </span>add<span class="w"> </span>question
+</code></pre></div>
+<p>So just by updating our schema and prompt we've improved the performance of the extraction script by ~6% for exact match and ~1% for F1. We can see in Oxen that there are far fewer incorrect extracted answers:</p>
+<p><img alt="Screenshot 2024-02-07 at 9 40 03 PM" src="https://github.com/Mirascope/mirascope/assets/99370834/a1075054-fea0-413a-a0b0-5f28c518356d" /></p>
+<p>It's also worth noting that we now have a record of both prompt versions and their answers. Going forward, it will be easy to iterate on the prompts and more reliably track which prompts perform the best.</p>
 
 
 
@@ -1501,7 +1647,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../constants/" class="md-footer__link md-footer__link--prev" aria-label="Previous: constants">
+          <a href="../basic_examples/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Examples">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1511,20 +1657,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                constants
+                Basic Examples
               </div>
             </div>
           </a>
         
         
           
-          <a href="../schemas/" class="md-footer__link md-footer__link--next" aria-label="Next: schemas">
+          <a href="../rag/" class="md-footer__link md-footer__link--next" aria-label="Next: RAG">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                schemas
+                RAG
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1599,10 +1745,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
       
     
   </body>
