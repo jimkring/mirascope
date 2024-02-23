@@ -1565,8 +1565,8 @@
 <ul>
 <li>Make sure you are in sync with the main repo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>main
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>dev
 </code></pre></div>
 <ul>
 <li>Create a <code>git</code> feature branch with a meaningful name where you will add your contributions.</li>
@@ -1616,6 +1616,8 @@
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>All changes to the codebase must be properly unit tested. If a change requires updating an existing unit test, make sure to think through if the change is breaking.</p>
 <p>We use <code>pytest</code> as our testing framework. If you haven't worked with it before, take a look at <a href="https://docs.pytest.org/">their docs</a>.</p>
+<p>Furthermore, we have a full coverage requirement, so all incoming code must have 100% coverage. This policy ensures that every line of code is run in our tests. However, while achieving full coverage is essential, it is not sufficient on its own. Coverage metrics ensure code execution but do not guarantee correctness under all conditions. Make sure to stress test beyond coverage to reduce bugs.</p>
+<p>We use a <a href="https://app.codecov.io/github/Mirascope/mirascope/tree/dev">Codecov dashboard</a> to monitor and track our coverage.</p>
 <h2 id="formatting-and-linting">Formatting and Linting<a class="headerlink" href="#formatting-and-linting" title="Permanent link">&para;</a></h2>
 <p>In an effort to keep the codebase clean and easy to work with, we use <code>ruff</code> for formatting and both <code>ruff</code> and <code>mypy</code> for linting. Before sending any PR for review, make sure to run both <code>ruff</code> and <code>mypy</code>.</p>
 <p>If you are using VS Code, then install the extensions in <code>.vscode/extensions.json</code> and the workspace settings should automatically run <code>ruff</code> formatting on save and show <code>ruff</code> and <code>mypy</code> errors.</p>

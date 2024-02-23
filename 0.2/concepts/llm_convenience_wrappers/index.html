@@ -1726,7 +1726,7 @@
 </ul>
 <h2 id="openaichat">OpenAIChat<a class="headerlink" href="#openaichat" title="Permanent link">&para;</a></h2>
 <h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
-<p>You can initialize an <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.OpenAIChat"><code>OpenAIChat</code></a> instance and call <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.OpenAIChat.create"><code>create</code></a> to generate an <a href="../../api/chat/types/#mirascope.chat.types.OpenAIChatCompletion"><code>OpenAIChatCompletion</code></a>:</p>
+<p>You can initialize an <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.openai_chat.OpenAIChat"><code>OpenAIChat</code></a> instance and call <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.openai_chat.OpenAIChat.create"><code>create</code></a> to generate an <a href="../../api/chat/types/#mirascope.chat.types.OpenAIChatCompletion"><code>OpenAIChatCompletion</code></a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">OpenAIChat</span><span class="p">,</span> <span class="n">Prompt</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span> <span class="nc">RecipePrompt</span><span class="p">(</span><span class="n">Prompt</span><span class="p">):</span>
@@ -1800,7 +1800,7 @@
 <a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">recipe_by_chef_using</span><span class="p">(</span><span class="s2">&quot;apples&quot;</span><span class="p">,</span> <span class="s2">&quot;japanese&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="streaming">Streaming<a class="headerlink" href="#streaming" title="Permanent link">&para;</a></h3>
-<p>You can use the <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.OpenAIChat.stream"><code>stream</code></a> method to stream a response. All this is doing is setting <code>stream=True</code> and providing the <a href="../../api/chat/types/#mirascope.chat.types.OpenAIChatCompletionChunk"><code>OpenAIChatCompletionChunk</code></a> convenience wrappers around the response chunks.</p>
+<p>You can use the <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.openai_chat.OpenAIChat.stream"><code>stream</code></a> method to stream a response. All this is doing is setting <code>stream=True</code> and providing the <a href="../../api/chat/types/#mirascope.chat.types.OpenAIChatCompletionChunk"><code>OpenAIChatCompletionChunk</code></a> convenience wrappers around the response chunks.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">chat</span> <span class="o">=</span> <span class="n">OpenAIChat</span><span class="p">()</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">chat</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
@@ -1820,7 +1820,7 @@
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">chunk</span><span class="o">.</span><span class="n">content</span>  <span class="c1"># original.choices[0].delta.content</span>
 </code></pre></div>
 <h3 id="extraction">Extraction<a class="headerlink" href="#extraction" title="Permanent link">&para;</a></h3>
-<p>Often you want to extract structured information into a format like JSON. The <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.OpenAIChat.extract"><code>extract</code></a> method makes this extremely easy by extracting the information into a Pydantic <code>BaseModel</code> schema that you define:</p>
+<p>Often you want to extract structured information into a format like JSON. The <a href="../../api/chat/models/openai_chat/#mirascope.chat.models.openai_chat.OpenAIChat.extract"><code>extract</code></a> method makes this extremely easy by extracting the information into a Pydantic <code>BaseModel</code> schema that you define:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">mirascope</span> <span class="kn">import</span> <span class="n">OpenAIChat</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
