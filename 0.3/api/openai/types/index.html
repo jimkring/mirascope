@@ -1927,6 +1927,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="OpenAICallParams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mirascope.openai.types.OpenAICallParams.kwargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      kwargs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2266,6 +2281,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="OpenAICallParams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mirascope.openai.types.OpenAICallParams.kwargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      kwargs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2524,7 +2554,18 @@
 <span class="normal"><a href="#__codelineno-0-229">229</a></span>
 <span class="normal"><a href="#__codelineno-0-230">230</a></span>
 <span class="normal"><a href="#__codelineno-0-231">231</a></span>
-<span class="normal"><a href="#__codelineno-0-232">232</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="k">class</span> <span class="nc">OpenAICallParams</span><span class="p">(</span><span class="n">BaseCallParams</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-232">232</a></span>
+<span class="normal"><a href="#__codelineno-0-233">233</a></span>
+<span class="normal"><a href="#__codelineno-0-234">234</a></span>
+<span class="normal"><a href="#__codelineno-0-235">235</a></span>
+<span class="normal"><a href="#__codelineno-0-236">236</a></span>
+<span class="normal"><a href="#__codelineno-0-237">237</a></span>
+<span class="normal"><a href="#__codelineno-0-238">238</a></span>
+<span class="normal"><a href="#__codelineno-0-239">239</a></span>
+<span class="normal"><a href="#__codelineno-0-240">240</a></span>
+<span class="normal"><a href="#__codelineno-0-241">241</a></span>
+<span class="normal"><a href="#__codelineno-0-242">242</a></span>
+<span class="normal"><a href="#__codelineno-0-243">243</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="k">class</span> <span class="nc">OpenAICallParams</span><span class="p">(</span><span class="n">BaseCallParams</span><span class="p">):</span>
 <a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The parameters to use when calling the OpenAI Chat API with a prompt.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-204" name="__codelineno-0-204"></a>
 <a id="__codelineno-0-205" name="__codelineno-0-205"></a>    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gpt-3.5-turbo-0125&quot;</span>
@@ -2555,6 +2596,17 @@
 <a id="__codelineno-0-230" name="__codelineno-0-230"></a>    <span class="n">timeout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Timeout</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-0-231" name="__codelineno-0-231"></a>
 <a id="__codelineno-0-232" name="__codelineno-0-232"></a>    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">arbitrary_types_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a>    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the keyword argument call parameters.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>        <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a>            <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a>            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a>                <span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;base_url&quot;</span><span class="p">,</span> <span class="s2">&quot;wrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;async_wrapper&quot;</span><span class="p">}</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>            <span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -2567,6 +2619,27 @@
 
 
 
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="mirascope.openai.types.OpenAICallParams.kwargs" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#mirascope.openai.types.OpenAICallParams.kwargs" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns the keyword argument call parameters.</p>
+  </div>
+
+</div>
 
 
 

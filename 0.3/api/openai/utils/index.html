@@ -2410,15 +2410,7 @@ left unchanged.</p>
 <span class="normal"><a href="#__codelineno-0-61">61</a></span>
 <span class="normal"><a href="#__codelineno-0-62">62</a></span>
 <span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="k">def</span> <span class="nf">patch_openai_kwargs</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="k">def</span> <span class="nf">patch_openai_kwargs</span><span class="p">(</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31"></a>    <span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
 <a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
 <a id="__codelineno-0-33" name="__codelineno-0-33"></a>    <span class="n">tools</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">OpenAITool</span><span class="p">]]],</span>
@@ -2447,20 +2439,12 @@ left unchanged.</p>
 <a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="p">]</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">messages</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>            <span class="p">{</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prompt</span><span class="o">.</span><span class="n">call_params</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                    <span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;wrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;async_wrapper&quot;</span><span class="p">}</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>                <span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="p">}</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="p">)</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="k">if</span> <span class="n">tools</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">tool_schema</span><span class="p">()</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">]</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="k">if</span> <span class="s2">&quot;tool_choice&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a>            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tool_choice&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">prompt</span><span class="o">.</span><span class="n">call_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="k">if</span> <span class="n">tools</span><span class="p">:</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">tool_schema</span><span class="p">()</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">]</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="k">if</span> <span class="s2">&quot;tool_choice&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tool_choice&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>

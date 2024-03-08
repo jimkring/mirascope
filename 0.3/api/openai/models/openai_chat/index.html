@@ -2461,8 +2461,7 @@ for interacting with their API. For more usage details, check out our examples.<
 <span class="normal"><a href="#__codelineno-0-261">261</a></span>
 <span class="normal"><a href="#__codelineno-0-262">262</a></span>
 <span class="normal"><a href="#__codelineno-0-263">263</a></span>
-<span class="normal"><a href="#__codelineno-0-264">264</a></span>
-<span class="normal"><a href="#__codelineno-0-265">265</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">class</span> <span class="nc">OpenAIChat</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">class</span> <span class="nc">OpenAIChat</span><span class="p">:</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;A convenience wrapper for the OpenAI Chat client.</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    The Mirascope convenience wrapper for OpenAI provides a more user-friendly interface</span>
@@ -2577,9 +2576,9 @@ for interacting with their API. For more usage details, check out our examples.<
 <a id="__codelineno-0-135" name="__codelineno-0-135"></a>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
 <a id="__codelineno-0-136" name="__codelineno-0-136"></a>        <span class="n">openai_tools</span> <span class="o">=</span> <span class="n">convert_tools_list_to_openai_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
 <a id="__codelineno-0-137" name="__codelineno-0-137"></a>        <span class="n">patch_openai_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">openai_tools</span><span class="p">)</span>
-<a id="__codelineno-0-138" name="__codelineno-0-138"></a>        <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
-<a id="__codelineno-0-139" name="__codelineno-0-139"></a>            <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-140" name="__codelineno-0-140"></a>                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+<a id="__codelineno-0-139" name="__codelineno-0-139"></a>        <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
+<a id="__codelineno-0-140" name="__codelineno-0-140"></a>            <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-141" name="__codelineno-0-141"></a>                <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-142" name="__codelineno-0-142"></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-143" name="__codelineno-0-143"></a>            <span class="p">),</span>
@@ -2637,74 +2636,73 @@ for interacting with their API. For more usage details, check out our examples.<
 <a id="__codelineno-0-195" name="__codelineno-0-195"></a>
 <a id="__codelineno-0-196" name="__codelineno-0-196"></a>        <span class="n">openai_tools</span> <span class="o">=</span> <span class="n">convert_tools_list_to_openai_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
 <a id="__codelineno-0-197" name="__codelineno-0-197"></a>        <span class="n">patch_openai_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">openai_tools</span><span class="p">)</span>
-<a id="__codelineno-0-198" name="__codelineno-0-198"></a>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
 <a id="__codelineno-0-199" name="__codelineno-0-199"></a>        <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-200" name="__codelineno-0-200"></a>            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-201" name="__codelineno-0-201"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-202" name="__codelineno-0-202"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-203" name="__codelineno-0-203"></a>        <span class="p">)</span>
-<a id="__codelineno-0-204" name="__codelineno-0-204"></a>
-<a id="__codelineno-0-205" name="__codelineno-0-205"></a>        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
-<a id="__codelineno-0-206" name="__codelineno-0-206"></a>            <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a>                <span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span>
-<a id="__codelineno-0-208" name="__codelineno-0-208"></a>                <span class="n">tool_types</span><span class="o">=</span><span class="n">openai_tools</span> <span class="k">if</span> <span class="n">tools</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a>            <span class="p">)</span>
-<a id="__codelineno-0-210" name="__codelineno-0-210"></a>
-<a id="__codelineno-0-211" name="__codelineno-0-211"></a>    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span>
-<a id="__codelineno-0-212" name="__codelineno-0-212"></a>        <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-213" name="__codelineno-0-213"></a>        <span class="n">schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModelT</span><span class="p">],</span>
-<a id="__codelineno-0-214" name="__codelineno-0-214"></a>        <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-215" name="__codelineno-0-215"></a>        <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-0-216" name="__codelineno-0-216"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<a id="__codelineno-0-217" name="__codelineno-0-217"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseModelT</span><span class="p">:</span>
-<a id="__codelineno-0-218" name="__codelineno-0-218"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts the given schema from the response of a chat `create` call.</span>
-<a id="__codelineno-0-219" name="__codelineno-0-219"></a>
-<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">        The given schema is converted into an `OpenAITool`, complete with a description</span>
-<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">        of the tool, all of the fields, and their types. This allows us to take</span>
-<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">        advantage of OpenAI&#39;s tool/function calling functionality to extract information</span>
-<a id="__codelineno-0-223" name="__codelineno-0-223"></a><span class="sd">        from a prompt according to the context provided by the `BaseModel` schema.</span>
-<a id="__codelineno-0-224" name="__codelineno-0-224"></a>
-<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="sd">            schema: The `BaseModel` schema to extract from the completion.</span>
-<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">            prompt: The prompt from which the schema will be extracted. If `prompt` is</span>
-<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">                a `BasePrompt` instance, then the call will use the `OpenAICallParams` in</span>
-<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">                the prompt.</span>
-<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">            retries: The maximum number of times to retry the query on validation error.</span>
-<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">                find available keyword arguments here:</span>
-<a id="__codelineno-0-233" name="__codelineno-0-233"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-234" name="__codelineno-0-234"></a>
-<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">            The `Schema` instance extracted from the completion.</span>
-<a id="__codelineno-0-237" name="__codelineno-0-237"></a>
-<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">            ValidationError: if the schema cannot be instantiated from the completion.</span>
-<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">            OpenAIError: raises any OpenAI errors, see:</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">                https://platform.openai.com/docs/guides/error-codes/api-errors</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="n">tool</span> <span class="o">=</span> <span class="n">convert_base_model_to_tool</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">OpenAITool</span><span class="p">)</span>
-<a id="__codelineno-0-244" name="__codelineno-0-244"></a>        <span class="n">completion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-245" name="__codelineno-0-245"></a>            <span class="n">prompt</span><span class="p">,</span>
-<a id="__codelineno-0-246" name="__codelineno-0-246"></a>            <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span>
-<a id="__codelineno-0-247" name="__codelineno-0-247"></a>            <span class="n">tool_choice</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-248" name="__codelineno-0-248"></a>                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-249" name="__codelineno-0-249"></a>                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
-<a id="__codelineno-0-250" name="__codelineno-0-250"></a>            <span class="p">},</span>
-<a id="__codelineno-0-251" name="__codelineno-0-251"></a>            <span class="n">extract</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-252" name="__codelineno-0-252"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-253" name="__codelineno-0-253"></a>        <span class="p">)</span>
-<a id="__codelineno-0-254" name="__codelineno-0-254"></a>
-<a id="__codelineno-0-255" name="__codelineno-0-255"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-256" name="__codelineno-0-256"></a>            <span class="n">model</span> <span class="o">=</span> <span class="n">schema</span><span class="p">(</span><span class="o">**</span><span class="n">completion</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-257" name="__codelineno-0-257"></a>            <span class="n">model</span><span class="o">.</span><span class="n">_completion</span> <span class="o">=</span> <span class="n">completion</span>
-<a id="__codelineno-0-258" name="__codelineno-0-258"></a>            <span class="k">return</span> <span class="n">model</span>
-<a id="__codelineno-0-259" name="__codelineno-0-259"></a>        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-260" name="__codelineno-0-260"></a>            <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-261" name="__codelineno-0-261"></a>                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying due to exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-262" name="__codelineno-0-262"></a>                <span class="c1"># TODO: update this to include failure history once prompts can handle</span>
-<a id="__codelineno-0-263" name="__codelineno-0-263"></a>                <span class="c1"># chat history properly.</span>
-<a id="__codelineno-0-264" name="__codelineno-0-264"></a>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-265" name="__codelineno-0-265"></a>            <span class="k">raise</span>  <span class="c1"># re-raise if we have no retries left</span>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a>        <span class="p">)</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a>        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a>            <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a>                <span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a>                <span class="n">tool_types</span><span class="o">=</span><span class="n">openai_tools</span> <span class="k">if</span> <span class="n">tools</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a>            <span class="p">)</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a>
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a>    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a>        <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a>        <span class="n">schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModelT</span><span class="p">],</span>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a>        <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a>        <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseModelT</span><span class="p">:</span>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts the given schema from the response of a chat `create` call.</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a><span class="sd">        The given schema is converted into an `OpenAITool`, complete with a description</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">        of the tool, all of the fields, and their types. This allows us to take</span>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">        advantage of OpenAI&#39;s tool/function calling functionality to extract information</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">        from a prompt according to the context provided by the `BaseModel` schema.</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">            schema: The `BaseModel` schema to extract from the completion.</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="sd">            prompt: The prompt from which the schema will be extracted. If `prompt` is</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">                a `BasePrompt` instance, then the call will use the `OpenAICallParams` in</span>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">                the prompt.</span>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">            retries: The maximum number of times to retry the query on validation error.</span>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">            **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">                find available keyword arguments here:</span>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">                https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">            The `Schema` instance extracted from the completion.</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">            ValidationError: if the schema cannot be instantiated from the completion.</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">            OpenAIError: raises any OpenAI errors, see:</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">                https://platform.openai.com/docs/guides/error-codes/api-errors</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>        <span class="n">tool</span> <span class="o">=</span> <span class="n">convert_base_model_to_tool</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">OpenAITool</span><span class="p">)</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="n">completion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a>            <span class="n">prompt</span><span class="p">,</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a>            <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>            <span class="n">tool_choice</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a>                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a>                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>            <span class="p">},</span>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>            <span class="n">extract</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a>        <span class="p">)</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>            <span class="n">model</span> <span class="o">=</span> <span class="n">schema</span><span class="p">(</span><span class="o">**</span><span class="n">completion</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>            <span class="n">model</span><span class="o">.</span><span class="n">_completion</span> <span class="o">=</span> <span class="n">completion</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>            <span class="k">return</span> <span class="n">model</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>            <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying due to exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>                <span class="c1"># TODO: update this to include failure history once prompts can handle</span>
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a>                <span class="c1"># chat history properly.</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>            <span class="k">raise</span>  <span class="c1"># re-raise if we have no retries left</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -3047,9 +3045,9 @@ https://platform.openai.com/docs/guides/error-codes/api-errors</p>
 <a id="__codelineno-0-135" name="__codelineno-0-135"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
 <a id="__codelineno-0-136" name="__codelineno-0-136"></a>    <span class="n">openai_tools</span> <span class="o">=</span> <span class="n">convert_tools_list_to_openai_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
 <a id="__codelineno-0-137" name="__codelineno-0-137"></a>    <span class="n">patch_openai_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">openai_tools</span><span class="p">)</span>
-<a id="__codelineno-0-138" name="__codelineno-0-138"></a>    <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
-<a id="__codelineno-0-139" name="__codelineno-0-139"></a>        <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-140" name="__codelineno-0-140"></a>            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a>    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+<a id="__codelineno-0-139" name="__codelineno-0-139"></a>    <span class="k">return</span> <span class="n">OpenAIChatCompletion</span><span class="p">(</span>
+<a id="__codelineno-0-140" name="__codelineno-0-140"></a>        <span class="n">completion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
 <a id="__codelineno-0-141" name="__codelineno-0-141"></a>            <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-142" name="__codelineno-0-142"></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-143" name="__codelineno-0-143"></a>        <span class="p">),</span>
@@ -3219,7 +3217,8 @@ https://platform.openai.com/docs/guides/error-codes/api-errors</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/openai/models/openai_chat.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-211">211</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span>
 <span class="normal"><a href="#__codelineno-0-212">212</a></span>
 <span class="normal"><a href="#__codelineno-0-213">213</a></span>
 <span class="normal"><a href="#__codelineno-0-214">214</a></span>
@@ -3272,62 +3271,61 @@ https://platform.openai.com/docs/guides/error-codes/api-errors</p>
 <span class="normal"><a href="#__codelineno-0-261">261</a></span>
 <span class="normal"><a href="#__codelineno-0-262">262</a></span>
 <span class="normal"><a href="#__codelineno-0-263">263</a></span>
-<span class="normal"><a href="#__codelineno-0-264">264</a></span>
-<span class="normal"><a href="#__codelineno-0-265">265</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="k">def</span> <span class="nf">extract</span><span class="p">(</span>
-<a id="__codelineno-0-212" name="__codelineno-0-212"></a>    <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-213" name="__codelineno-0-213"></a>    <span class="n">schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModelT</span><span class="p">],</span>
-<a id="__codelineno-0-214" name="__codelineno-0-214"></a>    <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-215" name="__codelineno-0-215"></a>    <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-0-216" name="__codelineno-0-216"></a>    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseModelT</span><span class="p">:</span>
-<a id="__codelineno-0-218" name="__codelineno-0-218"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts the given schema from the response of a chat `create` call.</span>
-<a id="__codelineno-0-219" name="__codelineno-0-219"></a>
-<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">    The given schema is converted into an `OpenAITool`, complete with a description</span>
-<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">    of the tool, all of the fields, and their types. This allows us to take</span>
-<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">    advantage of OpenAI&#39;s tool/function calling functionality to extract information</span>
-<a id="__codelineno-0-223" name="__codelineno-0-223"></a><span class="sd">    from a prompt according to the context provided by the `BaseModel` schema.</span>
-<a id="__codelineno-0-224" name="__codelineno-0-224"></a>
-<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="sd">        schema: The `BaseModel` schema to extract from the completion.</span>
-<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">        prompt: The prompt from which the schema will be extracted. If `prompt` is</span>
-<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">            a `BasePrompt` instance, then the call will use the `OpenAICallParams` in</span>
-<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">            the prompt.</span>
-<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">        retries: The maximum number of times to retry the query on validation error.</span>
-<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
-<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">            find available keyword arguments here:</span>
-<a id="__codelineno-0-233" name="__codelineno-0-233"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
-<a id="__codelineno-0-234" name="__codelineno-0-234"></a>
-<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">        The `Schema` instance extracted from the completion.</span>
-<a id="__codelineno-0-237" name="__codelineno-0-237"></a>
-<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">        ValidationError: if the schema cannot be instantiated from the completion.</span>
-<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">        OpenAIError: raises any OpenAI errors, see:</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">            https://platform.openai.com/docs/guides/error-codes/api-errors</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-243" name="__codelineno-0-243"></a>    <span class="n">tool</span> <span class="o">=</span> <span class="n">convert_base_model_to_tool</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">OpenAITool</span><span class="p">)</span>
-<a id="__codelineno-0-244" name="__codelineno-0-244"></a>    <span class="n">completion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-245" name="__codelineno-0-245"></a>        <span class="n">prompt</span><span class="p">,</span>
-<a id="__codelineno-0-246" name="__codelineno-0-246"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span>
-<a id="__codelineno-0-247" name="__codelineno-0-247"></a>        <span class="n">tool_choice</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-248" name="__codelineno-0-248"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-249" name="__codelineno-0-249"></a>            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
-<a id="__codelineno-0-250" name="__codelineno-0-250"></a>        <span class="p">},</span>
-<a id="__codelineno-0-251" name="__codelineno-0-251"></a>        <span class="n">extract</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-252" name="__codelineno-0-252"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-253" name="__codelineno-0-253"></a>    <span class="p">)</span>
-<a id="__codelineno-0-254" name="__codelineno-0-254"></a>
-<a id="__codelineno-0-255" name="__codelineno-0-255"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">schema</span><span class="p">(</span><span class="o">**</span><span class="n">completion</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-257" name="__codelineno-0-257"></a>        <span class="n">model</span><span class="o">.</span><span class="n">_completion</span> <span class="o">=</span> <span class="n">completion</span>
-<a id="__codelineno-0-258" name="__codelineno-0-258"></a>        <span class="k">return</span> <span class="n">model</span>
-<a id="__codelineno-0-259" name="__codelineno-0-259"></a>    <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-260" name="__codelineno-0-260"></a>        <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-261" name="__codelineno-0-261"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying due to exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-262" name="__codelineno-0-262"></a>            <span class="c1"># TODO: update this to include failure history once prompts can handle</span>
-<a id="__codelineno-0-263" name="__codelineno-0-263"></a>            <span class="c1"># chat history properly.</span>
-<a id="__codelineno-0-264" name="__codelineno-0-264"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-265" name="__codelineno-0-265"></a>        <span class="k">raise</span>  <span class="c1"># re-raise if we have no retries left</span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="k">def</span> <span class="nf">extract</span><span class="p">(</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a>    <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a>    <span class="n">schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModelT</span><span class="p">],</span>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a>    <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a>    <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a>    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseModelT</span><span class="p">:</span>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts the given schema from the response of a chat `create` call.</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a><span class="sd">    The given schema is converted into an `OpenAITool`, complete with a description</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">    of the tool, all of the fields, and their types. This allows us to take</span>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">    advantage of OpenAI&#39;s tool/function calling functionality to extract information</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">    from a prompt according to the context provided by the `BaseModel` schema.</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">        schema: The `BaseModel` schema to extract from the completion.</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="sd">        prompt: The prompt from which the schema will be extracted. If `prompt` is</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">            a `BasePrompt` instance, then the call will use the `OpenAICallParams` in</span>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">            the prompt.</span>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">        retries: The maximum number of times to retry the query on validation error.</span>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">        **kwargs: Additional keyword arguments to pass to the API call. You can</span>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">            find available keyword arguments here:</span>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">            https://platform.openai.com/docs/api-reference/chat/create</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">        The `Schema` instance extracted from the completion.</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">        ValidationError: if the schema cannot be instantiated from the completion.</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">        OpenAIError: raises any OpenAI errors, see:</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">            https://platform.openai.com/docs/guides/error-codes/api-errors</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>    <span class="n">tool</span> <span class="o">=</span> <span class="n">convert_base_model_to_tool</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">OpenAITool</span><span class="p">)</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>    <span class="n">completion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a>        <span class="n">prompt</span><span class="p">,</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>        <span class="n">tool_choice</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a>            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>        <span class="p">},</span>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>        <span class="n">extract</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a>    <span class="p">)</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">schema</span><span class="p">(</span><span class="o">**</span><span class="n">completion</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="n">model</span><span class="o">.</span><span class="n">_completion</span> <span class="o">=</span> <span class="n">completion</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>        <span class="k">return</span> <span class="n">model</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>    <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>        <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying due to exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>            <span class="c1"># TODO: update this to include failure history once prompts can handle</span>
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a>            <span class="c1"># chat history properly.</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>        <span class="k">raise</span>  <span class="c1"># re-raise if we have no retries left</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3531,8 +3529,7 @@ https://platform.openai.com/docs/guides/error-codes/api-errors</p>
 <span class="normal"><a href="#__codelineno-0-205">205</a></span>
 <span class="normal"><a href="#__codelineno-0-206">206</a></span>
 <span class="normal"><a href="#__codelineno-0-207">207</a></span>
-<span class="normal"><a href="#__codelineno-0-208">208</a></span>
-<span class="normal"><a href="#__codelineno-0-209">209</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-149" name="__codelineno-0-149"></a><span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-149" name="__codelineno-0-149"></a><span class="k">def</span> <span class="nf">stream</span><span class="p">(</span>
 <a id="__codelineno-0-150" name="__codelineno-0-150"></a>    <span class="bp">self</span><span class="p">,</span>
 <a id="__codelineno-0-151" name="__codelineno-0-151"></a>    <span class="n">prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">BasePrompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-152" name="__codelineno-0-152"></a>    <span class="n">tools</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">OpenAITool</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3581,18 +3578,17 @@ https://platform.openai.com/docs/guides/error-codes/api-errors</p>
 <a id="__codelineno-0-195" name="__codelineno-0-195"></a>
 <a id="__codelineno-0-196" name="__codelineno-0-196"></a>    <span class="n">openai_tools</span> <span class="o">=</span> <span class="n">convert_tools_list_to_openai_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
 <a id="__codelineno-0-197" name="__codelineno-0-197"></a>    <span class="n">patch_openai_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">openai_tools</span><span class="p">)</span>
-<a id="__codelineno-0-198" name="__codelineno-0-198"></a>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a>    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
 <a id="__codelineno-0-199" name="__codelineno-0-199"></a>    <span class="n">completion_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<a id="__codelineno-0-200" name="__codelineno-0-200"></a>        <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-0-201" name="__codelineno-0-201"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-0-202" name="__codelineno-0-202"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<a id="__codelineno-0-203" name="__codelineno-0-203"></a>    <span class="p">)</span>
-<a id="__codelineno-0-204" name="__codelineno-0-204"></a>
-<a id="__codelineno-0-205" name="__codelineno-0-205"></a>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
-<a id="__codelineno-0-206" name="__codelineno-0-206"></a>        <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a>            <span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span>
-<a id="__codelineno-0-208" name="__codelineno-0-208"></a>            <span class="n">tool_types</span><span class="o">=</span><span class="n">openai_tools</span> <span class="k">if</span> <span class="n">tools</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a>        <span class="p">)</span>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a>        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a>    <span class="p">)</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a>    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion_stream</span><span class="p">:</span>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a>        <span class="k">yield</span> <span class="n">OpenAIChatCompletionChunk</span><span class="p">(</span>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a>            <span class="n">chunk</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a>            <span class="n">tool_types</span><span class="o">=</span><span class="n">openai_tools</span> <span class="k">if</span> <span class="n">tools</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a>        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
