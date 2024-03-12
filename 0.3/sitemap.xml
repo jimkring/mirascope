@@ -2,262 +2,262 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.mirascope.io/latest/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/CONTRIBUTING/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/HELP/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/enums/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/prompts/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/base/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/base/prompt/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/base/tools/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/base/types/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/commands/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/constants/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/generic/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/schemas/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/cli/utils/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/gemini/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/gemini/prompt/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/gemini/tools/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/gemini/types/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/prompt/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/tools/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/types/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/utils/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/models/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/models/openai_chat/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/models/openai_chat_async/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/parsers/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/parsers/openai_tool_stream_parser/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/openai/parsers/openai_tool_stream_parser_async/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/wandb/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/api/wandb/prompt/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/attaching_and_calling_tool_functions/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/defining_and_extracting_schemas/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/defining_tools_%28function_calls%29/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/dumping_prompts/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/extracting_base_types/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/extracting_structured_information_using_llms/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/generating_content/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/integrations/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/streaming_generated_content/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/tools_%28function_calling%29/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/using_different_model_providers/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/using_the_mirascope_cli/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/validation/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/why_were_building_mirascope/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/concepts/writing_prompts/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/cookbook/langsmith/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/cookbook/rag/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/cookbook/squad_extraction/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.mirascope.io/latest/cookbook/wandb_chain/</loc>
-         <lastmod>2024-03-08</lastmod>
+         <lastmod>2024-03-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
