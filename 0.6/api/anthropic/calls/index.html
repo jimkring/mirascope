@@ -2247,7 +2247,20 @@
 <span class="normal"><a href="#__codelineno-0-210">210</a></span>
 <span class="normal"><a href="#__codelineno-0-211">211</a></span>
 <span class="normal"><a href="#__codelineno-0-212">212</a></span>
-<span class="normal"><a href="#__codelineno-0-213">213</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">class</span> <span class="nc">AnthropicCall</span><span class="p">(</span><span class="n">BaseCall</span><span class="p">[</span><span class="n">AnthropicCallResponse</span><span class="p">,</span> <span class="n">AnthropicCallResponseChunk</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+<span class="normal"><a href="#__codelineno-0-213">213</a></span>
+<span class="normal"><a href="#__codelineno-0-214">214</a></span>
+<span class="normal"><a href="#__codelineno-0-215">215</a></span>
+<span class="normal"><a href="#__codelineno-0-216">216</a></span>
+<span class="normal"><a href="#__codelineno-0-217">217</a></span>
+<span class="normal"><a href="#__codelineno-0-218">218</a></span>
+<span class="normal"><a href="#__codelineno-0-219">219</a></span>
+<span class="normal"><a href="#__codelineno-0-220">220</a></span>
+<span class="normal"><a href="#__codelineno-0-221">221</a></span>
+<span class="normal"><a href="#__codelineno-0-222">222</a></span>
+<span class="normal"><a href="#__codelineno-0-223">223</a></span>
+<span class="normal"><a href="#__codelineno-0-224">224</a></span>
+<span class="normal"><a href="#__codelineno-0-225">225</a></span>
+<span class="normal"><a href="#__codelineno-0-226">226</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">class</span> <span class="nc">AnthropicCall</span><span class="p">(</span><span class="n">BaseCall</span><span class="p">[</span><span class="n">AnthropicCallResponse</span><span class="p">,</span> <span class="n">AnthropicCallResponseChunk</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A base class for calling Anthropic&#39;s Claude models.</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a>
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    Example:</span>
@@ -2417,31 +2430,44 @@
 <a id="__codelineno-0-186" name="__codelineno-0-186"></a>
 <a id="__codelineno-0-187" name="__codelineno-0-187"></a><span class="sd">        To output nested structured data, encode it as valid XML with tags and values. For example:</span>
 <a id="__codelineno-0-188" name="__codelineno-0-188"></a>
-<a id="__codelineno-0-189" name="__codelineno-0-189"></a><span class="sd">        List:</span>
-<a id="__codelineno-0-190" name="__codelineno-0-190"></a><span class="sd">        &lt;listTypeParameter&gt;</span>
+<a id="__codelineno-0-189" name="__codelineno-0-189"></a><span class="sd">        List[int]:</span>
+<a id="__codelineno-0-190" name="__codelineno-0-190"></a><span class="sd">        &lt;parameterName&gt;</span>
 <a id="__codelineno-0-191" name="__codelineno-0-191"></a><span class="sd">            &lt;item&gt;1&lt;/item&gt;</span>
 <a id="__codelineno-0-192" name="__codelineno-0-192"></a><span class="sd">            &lt;item&gt;2&lt;/item&gt;</span>
 <a id="__codelineno-0-193" name="__codelineno-0-193"></a><span class="sd">            &lt;item&gt;3&lt;/item&gt;</span>
-<a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="sd">        &lt;/listTypeParameter&gt;</span>
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="sd">        &lt;/parameterName&gt;</span>
 <a id="__codelineno-0-195" name="__codelineno-0-195"></a>
-<a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="sd">        Dictionary:</span>
-<a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="sd">        &lt;dictTypeParameter&gt;</span>
-<a id="__codelineno-0-198" name="__codelineno-0-198"></a><span class="sd">            &lt;entry&gt;</span>
-<a id="__codelineno-0-199" name="__codelineno-0-199"></a><span class="sd">                &lt;key&gt;key1&lt;/key&gt;</span>
-<a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="sd">                &lt;value&gt;value1&lt;/value&gt;</span>
-<a id="__codelineno-0-201" name="__codelineno-0-201"></a><span class="sd">            &lt;/entry&gt;</span>
-<a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="sd">            &lt;entry&gt;</span>
-<a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="sd">                &lt;key&gt;key2&lt;/key&gt;</span>
-<a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">                &lt;value&gt;value2&lt;/value&gt;</span>
-<a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="sd">            &lt;/entry&gt;</span>
-<a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">        &lt;/dictTypeParameter&gt;</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a>
-<a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">        Here are the tools available:</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">        &lt;tools&gt;</span>
-<a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">        {tool_schemas}</span>
-<a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">        &lt;/tools&gt;</span>
-<a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tool_schemas</span><span class="o">=</span><span class="n">tool_schemas</span><span class="p">)</span>
-<a id="__codelineno-0-213" name="__codelineno-0-213"></a>        <span class="p">)</span>
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="sd">        List[object]:</span>
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="sd">        &lt;parameterName&gt;</span>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a><span class="sd">            &lt;item&gt;</span>
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a><span class="sd">                &lt;objectName&gt;</span>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="sd">                    &lt;objectValue&gt;value&lt;/objectValue&gt;</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a><span class="sd">                &lt;/objectName&gt;</span>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="sd">            &lt;/item&gt;</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="sd">        &lt;/parameterName&gt;</span>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="sd">        Dictionary:</span>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">        &lt;parameterName&gt;</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">            &lt;entry&gt;</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">                &lt;key&gt;key1&lt;/key&gt;</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">                &lt;value&gt;value1&lt;/value&gt;</span>
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">            &lt;/entry&gt;</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">            &lt;entry&gt;</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">                &lt;key&gt;key2&lt;/key&gt;</span>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a><span class="sd">                &lt;value&gt;value2&lt;/value&gt;</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a><span class="sd">            &lt;/entry&gt;</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a><span class="sd">        &lt;/parameterName&gt;</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="sd">        Remember, the above are just examples.</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a><span class="sd">        Make sure to properly nest by wrapping elements in lists with the &lt;item&gt; tag and dictionary elements with &lt;entry&gt; as necessary.</span>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a><span class="sd">        DO NOT FORGET THESE TAGS. Without these tags, we cannot properly parse the information you send.</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">        Here are the tools available:</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">        &lt;tools&gt;</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a><span class="sd">        {tool_schemas}</span>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a><span class="sd">        &lt;/tools&gt;</span>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tool_schemas</span><span class="o">=</span><span class="n">tool_schemas</span><span class="p">)</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a>        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
