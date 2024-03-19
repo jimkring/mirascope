@@ -2776,7 +2776,7 @@ and a convenient developer experience.</p>
 <a id="__codelineno-0-161" name="__codelineno-0-161"></a>        <span class="k">return</span> <span class="kc">None</span>
 <a id="__codelineno-0-162" name="__codelineno-0-162"></a>
 <a id="__codelineno-0-163" name="__codelineno-0-163"></a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Dumps the chat completion to a dictionary.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Dumps the response to a dictionary.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-165" name="__codelineno-0-165"></a>        <span class="k">return</span> <span class="p">{</span>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a>            <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
 <a id="__codelineno-0-167" name="__codelineno-0-167"></a>            <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">,</span>
@@ -3005,7 +3005,7 @@ and a convenient developer experience.</p>
 
   <div class="doc doc-contents ">
   
-      <p>Dumps the chat completion to a dictionary.</p>
+      <p>Dumps the response to a dictionary.</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/openai/types.py</code></summary>
@@ -3016,7 +3016,7 @@ and a convenient developer experience.</p>
 <span class="normal"><a href="#__codelineno-0-167">167</a></span>
 <span class="normal"><a href="#__codelineno-0-168">168</a></span>
 <span class="normal"><a href="#__codelineno-0-169">169</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Dumps the chat completion to a dictionary.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Dumps the response to a dictionary.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-165" name="__codelineno-0-165"></a>    <span class="k">return</span> <span class="p">{</span>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a>        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
 <a id="__codelineno-0-167" name="__codelineno-0-167"></a>        <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">,</span>
