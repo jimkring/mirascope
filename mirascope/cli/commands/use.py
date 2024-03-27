@@ -1,10 +1,11 @@
 """The use command for the Mirascope CLI."""
 import os
+from typing import Annotated, Optional, Union
 
 from typer import Argument
 
 from ...enums import MirascopeCommand
-from ..constants import CURRENT_REVISION_KEY
+from ..constants import CURRENT_REVISION_KEY, NAMESPACE_KEY
 from ..utils import (
     check_status,
     find_prompt_path,
@@ -18,14 +19,27 @@ from ..utils import (
 
 
 def use_command(
-    prompt_file_name: str = Argument(
-        help="Prompt file to use",
-        autocompletion=prompts_directory_files,
-        parser=parse_prompt_file_name,
-    ),
-    version: str = Argument(
-        help="Version of prompt to use",
-    ),
+    prompt_file_name: Annotated[
+        str,
+        Argument(
+            help="Prompt file to use",
+            autocompletion=prompts_directory_files,
+            parser=parse_prompt_file_name,
+        ),
+    ],
+    namespace: Annotated[
+        str,
+        Argument(
+            help="The namespace or version to use. If version is specified, \
+            it will use the prompt_file_name namespace"
+        ),
+    ],
+    namespace_version: Annotated[
+        Optional[str],
+        Argument(
+            help="Version of namespace to use",
+        ),
+    ] = None,
 ) -> None:
     """Uses the version and prompt specified by the user.
 
@@ -40,6 +54,11 @@ def use_command(
     Raises:
         FileNotFoundError: If the file is not found in the versions directory.
     """
+    if namespace_version:
+        version = namespace_version
+    else:
+        version = namespace
+        namespace = ""
     mirascope_settings = get_user_mirascope_settings()
     used_prompt_path = check_status(mirascope_settings, prompt_file_name)
     # Check status before continuing
@@ -51,7 +70,9 @@ def use_command(
     prompt_directory_path = mirascope_settings.prompts_location
     version_file_name = mirascope_settings.version_file_name
     prompt_versions_directory = os.path.join(version_directory_path, prompt_file_name)
-    revision_file_path = find_prompt_path(prompt_versions_directory, version)
+    revision_file_path = find_prompt_path(
+        os.path.join(prompt_versions_directory, namespace), version
+    )
     version_file_path = os.path.join(prompt_versions_directory, version_file_name)
     if revision_file_path is None:
         raise FileNotFoundError(
@@ -68,9 +89,7 @@ def use_command(
         run_format_command(prompt_file_path)
 
     # Update version file with new current revision
-    keys_to_update = {
-        CURRENT_REVISION_KEY: version,
-    }
+    keys_to_update = {CURRENT_REVISION_KEY: version, NAMESPACE_KEY: namespace}
     update_version_text_file(version_file_path, keys_to_update)
 
     print(f"Using {revision_file_path}")
