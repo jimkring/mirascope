@@ -7,6 +7,9 @@ from pydantic import BaseModel, Field
 from mirascope import tags
 from mirascope.anthropic import AnthropicExtractor
 
+prev_revision_id = "0003"
+revision_id = "0004"
+
 
 class ProblemDetails(BaseModel):
     solving_steps: str = Field(description="The steps to solve the math problem.")

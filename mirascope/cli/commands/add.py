@@ -1,7 +1,8 @@
 """The add command for the Mirascope CLI."""
 import os
+from typing import Annotated
 
-from typer import Argument
+from typer import Argument, Option
 
 from ...enums import MirascopeCommand
 from ..constants import CURRENT_REVISION_KEY, LATEST_REVISION_KEY
@@ -19,12 +20,15 @@ from ..utils import (
 
 
 def add_command(
-    prompt_file_name: str = Argument(
-        help="Prompt file to add",
-        autocompletion=prompts_directory_files,
-        parser=parse_prompt_file_name,
-        default="",
-    ),
+    prompt_file_name: Annotated[
+        str,
+        Argument(
+            help="Prompt file to add",
+            autocompletion=prompts_directory_files,
+            parser=parse_prompt_file_name,
+        ),
+    ],
+    alias: Annotated[str, Option("-m", "--alias", help="Alias to name the file")],
 ):
     """Adds the given prompt to the specified version directory.
 
@@ -73,9 +77,14 @@ def add_command(
             latest_revision_id = versions.latest_revision
             revision_id = f"{int(latest_revision_id)+1:04}"
         # Create revision file
-        revision_file = os.path.join(
-            prompt_versions_directory, f"{revision_id}_{prompt_file_name}.py"
-        )
+        if alias:
+            revision_file = os.path.join(
+                prompt_versions_directory, f"{revision_id}_{alias}.py"
+            )
+        else:
+            revision_file = os.path.join(
+                prompt_versions_directory, f"{revision_id}_{prompt_file_name}.py"
+            )
         custom_variables = MirascopeCliVariables(
             prev_revision_id=versions.current_revision,
             revision_id=revision_id,
@@ -110,4 +119,4 @@ def add_command(
             update_version_text_file(version_file_path, keys_to_update)
     if revision_file:
         run_format_command(revision_file)
-    print("Adding " f"{prompt_versions_directory}/{revision_id}_{prompt_file_name}.py")
+    print("Adding " f"{revision_file}.py")

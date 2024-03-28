@@ -324,7 +324,7 @@ def check_prompt_changed(file1_path: Optional[str], file2_path: Optional[str]) -
     return any(differences.values())
 
 
-def find_file_names(directory: str, prefix: str = "") -> list[str]:
+def find_file_names(directory: str, match: str = "") -> list[str]:
     """Finds all files in a directory.
 
     Args:
@@ -334,7 +334,7 @@ def find_file_names(directory: str, prefix: str = "") -> list[str]:
     Returns:
         A list of file names found.
     """
-    pattern = os.path.join(directory, f"[!_]{prefix}*.py")  # ignores private files
+    pattern = os.path.join(directory, f"[!_]*{match}*.py")  # ignores private files
     matching_files_with_dir = glob.glob(pattern)
 
     # Removing the directory part from each path
@@ -635,15 +635,21 @@ def check_status(
     version_directory_path = mirascope_settings.versions_location
     prompt_directory_path = mirascope_settings.prompts_location
     version_file_name = mirascope_settings.version_file_name
-    prompt_directory = os.path.join(version_directory_path, directory)
-    used_prompt_path = f"{prompt_directory_path}/{directory}.py"
+    versions_directory = os.path.join(version_directory_path, directory)
+
+    versions = get_prompt_versions(f"{versions_directory}/{version_file_name}")
+
+    used_prompt_path = os.path.join(
+        prompt_directory_path,
+        f"{directory}.py",
+    )
 
     # Get the currently used prompt version
-    versions = get_prompt_versions(f"{prompt_directory}/{version_file_name}")
     current_head = versions.current_revision
+
     if current_head is None:
         return used_prompt_path
-    current_version_prompt_path = find_prompt_path(prompt_directory, current_head)
+    current_version_prompt_path = find_prompt_path(versions_directory, current_head)
     # Check if users prompt matches the current prompt version
     has_file_changed = check_prompt_changed(
         current_version_prompt_path, used_prompt_path
