@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -3063,37 +3063,39 @@
 <span class="normal"><a href="#__codelineno-0-117">117</a></span>
 <span class="normal"><a href="#__codelineno-0-118">118</a></span>
 <span class="normal"><a href="#__codelineno-0-119">119</a></span>
-<span class="normal"><a href="#__codelineno-0-120">120</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="k">class</span> <span class="nc">BaseCallParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]):</span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="k">class</span> <span class="nc">BaseCallParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]):</span>
 <a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The parameters with which to make a call.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-92" name="__codelineno-0-92"></a>
 <a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span>
 <a id="__codelineno-0-94" name="__codelineno-0-94"></a>    <span class="n">tools</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-0-95" name="__codelineno-0-95"></a>    <span class="n">weave</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a>    <span class="n">logfire</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># TODO: Improve typing</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a>    <span class="n">logfire_async</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">&quot;allow&quot;</span><span class="p">,</span> <span class="n">arbitrary_types_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>        <span class="n">tool_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="n">exclude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns all parameters for the call as a keyword arguments dictionary.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a>        <span class="n">extra_exclude</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire_async&quot;</span><span class="p">}</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="n">exclude</span> <span class="o">=</span> <span class="n">extra_exclude</span> <span class="k">if</span> <span class="n">exclude</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">exclude</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_exclude</span><span class="p">)</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>            <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a>            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="p">}</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="ow">or</span> <span class="n">tool_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a>            <span class="k">return</span> <span class="n">kwargs</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a>            <span class="n">tool</span> <span class="k">if</span> <span class="n">isclass</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span> <span class="k">else</span> <span class="n">convert_function_to_tool</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">tool_type</span><span class="p">)</span>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a>            <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a>        <span class="p">]</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="k">return</span> <span class="n">kwargs</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>    <span class="c1"># TODO: Improve typing for logfire params</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>    <span class="n">logfire</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="n">logfire_async</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">&quot;allow&quot;</span><span class="p">,</span> <span class="n">arbitrary_types_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>        <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="n">tool_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>        <span class="n">exclude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns all parameters for the call as a keyword arguments dictionary.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="n">extra_exclude</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire_async&quot;</span><span class="p">}</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">exclude</span> <span class="o">=</span> <span class="n">extra_exclude</span> <span class="k">if</span> <span class="n">exclude</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">exclude</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_exclude</span><span class="p">)</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>            <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>        <span class="p">}</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="ow">or</span> <span class="n">tool_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>            <span class="k">return</span> <span class="n">kwargs</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>            <span class="n">tool</span> <span class="k">if</span> <span class="n">isclass</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span> <span class="k">else</span> <span class="n">convert_function_to_tool</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">tool_type</span><span class="p">)</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>            <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="p">]</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>        <span class="k">return</span> <span class="n">kwargs</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -3126,8 +3128,7 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/base/types.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-102">102</a></span>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span>
 <span class="normal"><a href="#__codelineno-0-104">104</a></span>
 <span class="normal"><a href="#__codelineno-0-105">105</a></span>
@@ -3145,26 +3146,27 @@
 <span class="normal"><a href="#__codelineno-0-117">117</a></span>
 <span class="normal"><a href="#__codelineno-0-118">118</a></span>
 <span class="normal"><a href="#__codelineno-0-119">119</a></span>
-<span class="normal"><a href="#__codelineno-0-120">120</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>    <span class="n">tool_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>    <span class="n">exclude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns all parameters for the call as a keyword arguments dictionary.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a>    <span class="n">extra_exclude</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire_async&quot;</span><span class="p">}</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a>    <span class="n">exclude</span> <span class="o">=</span> <span class="n">extra_exclude</span> <span class="k">if</span> <span class="n">exclude</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">exclude</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_exclude</span><span class="p">)</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a>    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a>    <span class="p">}</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="ow">or</span> <span class="n">tool_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="k">return</span> <span class="n">kwargs</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a>    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a>        <span class="n">tool</span> <span class="k">if</span> <span class="n">isclass</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span> <span class="k">else</span> <span class="n">convert_function_to_tool</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">tool_type</span><span class="p">)</span>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a>        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a>    <span class="p">]</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a>    <span class="k">return</span> <span class="n">kwargs</span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>    <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>    <span class="n">tool_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">BaseToolT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>    <span class="n">exclude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns all parameters for the call as a keyword arguments dictionary.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>    <span class="n">extra_exclude</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tools&quot;</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">,</span> <span class="s2">&quot;logfire_async&quot;</span><span class="p">}</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>    <span class="n">exclude</span> <span class="o">=</span> <span class="n">extra_exclude</span> <span class="k">if</span> <span class="n">exclude</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">exclude</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">extra_exclude</span><span class="p">)</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>    <span class="p">}</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="ow">or</span> <span class="n">tool_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="k">return</span> <span class="n">kwargs</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>        <span class="n">tool</span> <span class="k">if</span> <span class="n">isclass</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span> <span class="k">else</span> <span class="n">convert_function_to_tool</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">tool_type</span><span class="p">)</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>    <span class="p">]</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>    <span class="k">return</span> <span class="n">kwargs</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3928,7 +3930,7 @@ for logging or filtering.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
   </body>
