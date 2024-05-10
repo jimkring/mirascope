@@ -14,10 +14,10 @@
         <link rel="canonical" href="https://docs.mirascope.io/latest/integrations/logfire/">
       
       
-        <link rel="prev" href="../fastapi/">
+        <link rel="prev" href="../../concepts/dumping_prompts_and_calls/">
       
       
-        <link rel="next" href="../weights_and_biases/">
+        <link rel="next" href="../fastapi/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -277,7 +277,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../client_wrappers/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -908,48 +908,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../client_wrappers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Client Wrappers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fastapi/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    FastAPI
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1083,6 +1041,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../weights_and_biases/" class="md-nav__link">
         
   
@@ -1130,6 +1109,27 @@
   
   <span class="md-ellipsis">
     Llama Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client_wrappers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Client Wrappers
   </span>
   
 
@@ -3104,7 +3104,7 @@
 </ul>
 <p><img alt="logfire-screenshot-mirascope-anthropic-call" src="../../images/logfire-screenshot-mirascope-anthropic-call.png" /></p>
 <h3 id="extract">Extract<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h3>
-<p>Since Mirascope is built on top of <a href="https://docs.pydantic.dev/latest/">Pydantic</a>, you can use the <a href="https://docs.pydantic.dev/latest/concepts/plugins/">Pydantic plugin</a> to track additional logs and metrics about model validation, which you can enable using the [<code>pydantic_plugin</code>][logfire.configure(pydantic_plugin)] configuration.</p>
+<p>Since Mirascope is built on top of <a href="https://docs.pydantic.dev/latest/">Pydantic</a>, you can use the <a href="https://docs.pydantic.dev/latest/concepts/plugins/">Pydantic plugin</a> to track additional logs and metrics about model validation, which you can enable using the <a href="https://docs.pydantic.dev/logfire/integrations/pydantic/"><code>pydantic_plugin</code></a> configuration.</p>
 <p>This can be particularly useful when <a href="../../concepts/extracting_structured_information_using_llms/">extracting structured information</a> using LLMs:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Type</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
@@ -3260,7 +3260,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../fastapi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FastAPI">
+          <a href="../../concepts/dumping_prompts_and_calls/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dumping prompts and calls">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -3270,20 +3270,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                FastAPI
+                Dumping prompts and calls
               </div>
             </div>
           </a>
         
         
           
-          <a href="../weights_and_biases/" class="md-footer__link md-footer__link--next" aria-label="Next: Weights &amp; Biases">
+          <a href="../fastapi/" class="md-footer__link md-footer__link--next" aria-label="Next: FastAPI">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Weights & Biases
+                FastAPI
               </div>
             </div>
             <div class="md-footer__button md-icon">
