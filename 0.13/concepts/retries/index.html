@@ -17,7 +17,7 @@
         <link rel="prev" href="../chaining_calls/">
       
       
-        <link rel="next" href="../supported_llm_providers/">
+        <link rel="next" href="../chat_history/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -469,18 +469,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -706,48 +694,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../supported_llm_providers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Supported LLM providers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tracking_costs_for_llm_providers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tracking Costs for LLM Providers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../chat_history/" class="md-nav__link">
         
   
@@ -790,137 +736,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../defining_tools_%28function_calls%29/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Defining tools (function calls)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../extracting_structured_information_using_llms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Extracting structured information using LLMs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../defining_and_extracting_schemas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Defining and extracting schemas
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../attaching_and_calling_tool_functions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Attaching and calling tool functions
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../streaming_tools_and_structured_outputs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Streaming tools and structured outputs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../extracting_base_types/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Extracting base types
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Validation
   </span>
   
 
@@ -963,6 +783,48 @@
   
   <span class="md-ellipsis">
     Dumping prompts and calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supported_llm_providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Supported LLM providers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracking_costs_for_llm_providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tracking Costs for LLM Providers
   </span>
   
 
@@ -3184,7 +3046,7 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">task_details</span> <span class="o">=</span> <span class="n">TaskExtractor</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">)</span>
 </code></pre></div>
-<p>As you can see, Mirascope makes extraction extremely simple. Under the hood, Mirascope uses the provided schema to extract the generated content and validate it (see <a href="../validation/">Validation</a> for more details).</p>
+<p>As you can see, Mirascope makes extraction extremely simple. Under the hood, Mirascope uses the provided schema to extract the generated content and validate it (see <a href="../extracting_structured_information_using_llms/#validation">Validation</a> for more details).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">book</span> <span class="o">=</span> <span class="n">BookExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">retries</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># will retry up to 3 times </span>
 </code></pre></div>
 
@@ -3241,13 +3103,13 @@
         
         
           
-          <a href="../supported_llm_providers/" class="md-footer__link md-footer__link--next" aria-label="Next: Supported LLM providers">
+          <a href="../chat_history/" class="md-footer__link md-footer__link--next" aria-label="Next: Chat History">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Supported LLM providers
+                Chat History
               </div>
             </div>
             <div class="md-footer__button md-icon">

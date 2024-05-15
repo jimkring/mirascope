@@ -14,10 +14,10 @@
         <link rel="canonical" href="https://docs.mirascope.io/latest/concepts/extracting_structured_information_using_llms/">
       
       
-        <link rel="prev" href="../defining_tools_%28function_calls%29/">
+        <link rel="prev" href="../tools_%28function_calling%29/">
       
       
-        <link rel="next" href="../defining_and_extracting_schemas/">
+        <link rel="next" href="../rag_%28retrieval_augmented_generation%29/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -469,18 +469,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -648,48 +636,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../supported_llm_providers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Supported LLM providers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tracking_costs_for_llm_providers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tracking Costs for LLM Providers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../chat_history/" class="md-nav__link">
         
   
@@ -716,27 +662,6 @@
   
   <span class="md-ellipsis">
     Tools (Function Calling)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../defining_tools_%28function_calls%29/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Defining tools (function calls)
   </span>
   
 
@@ -808,9 +733,147 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mirascopes-approach" class="md-nav__link">
+  <a href="#defining-and-extracting-schemas-with-mirascope" class="md-nav__link">
     <span class="md-ellipsis">
-      Mirascope's Approach
+      Defining and Extracting Schemas with Mirascope
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining and Extracting Schemas with Mirascope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-base-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extracting base types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extracting base types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-enum-or-literal-for-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Enum or Literal for classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validating-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validating Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streaming-tools-and-structured-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Tools and Structured Outputs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Streaming Tools and Structured Outputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streaming-tools-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Tools (Function Calling)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Streaming Tools (Function Calling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streaming-partial-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Partial Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-pydantic-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Pydantic Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Synthetic Data
     </span>
   </a>
   
@@ -820,111 +883,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../defining_and_extracting_schemas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Defining and extracting schemas
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../attaching_and_calling_tool_functions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Attaching and calling tool functions
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../streaming_tools_and_structured_outputs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Streaming tools and structured outputs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../extracting_base_types/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Extracting base types
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Validation
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -963,6 +921,48 @@
   
   <span class="md-ellipsis">
     Dumping prompts and calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supported_llm_providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Supported LLM providers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracking_costs_for_llm_providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tracking Costs for LLM Providers
   </span>
   
 
@@ -3119,9 +3119,147 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mirascopes-approach" class="md-nav__link">
+  <a href="#defining-and-extracting-schemas-with-mirascope" class="md-nav__link">
     <span class="md-ellipsis">
-      Mirascope's Approach
+      Defining and Extracting Schemas with Mirascope
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining and Extracting Schemas with Mirascope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-base-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extracting base types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extracting base types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-enum-or-literal-for-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Enum or Literal for classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validating-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validating Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streaming-tools-and-structured-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Tools and Structured Outputs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Streaming Tools and Structured Outputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streaming-tools-function-calling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Tools (Function Calling)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Streaming Tools (Function Calling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streaming-partial-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Partial Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-pydantic-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Pydantic Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Synthetic Data
     </span>
   </a>
   
@@ -3154,8 +3292,10 @@
 <li><strong>Unstructured Outputs</strong>: LLMs are trained on vast amounts of unstructured text data, causing their outputs to be unstructured as well.</li>
 <li><strong>Hallucinations and Inaccuracies</strong>: LLMs can sometimes generate factually incorrect information, complicating the extraction of accurate structured data.</li>
 </ol>
-<h2 id="mirascopes-approach">Mirascope's Approach<a class="headerlink" href="#mirascopes-approach" title="Permanent link">&para;</a></h2>
-<p>Mirascope offers a convenient <code>extract</code> method on extractor classes to extract structured information from LLM outputs. This method leverages tools (function calling) to reliably extract the required structured data. While you can find more details in the following pages, let's consider a simple example where we want to extract task details like due date, priority, and description from a user's natural language input:</p>
+<h2 id="defining-and-extracting-schemas-with-mirascope">Defining and Extracting Schemas with Mirascope<a class="headerlink" href="#defining-and-extracting-schemas-with-mirascope" title="Permanent link">&para;</a></h2>
+<p>Mirascope's extraction functionality is built on top of <a href="https://pydantic.dev/">Pydantic</a>. We will walk through the high-level concepts you need to know to get started extracting structured information with LLMs, but we recommend reading <a href="https://docs.pydantic.dev/latest/">their docs</a> for more detailed explanations of everything that you can do with Pydantic.</p>
+<p>Mirascope offers a convenient <code>extract</code> method on extractor classes to extract structured information from LLM outputs. This method leverages tools (function calling) to reliably extract the required structured data.</p>
+<p>First, let's take a look at a simple example where we want to extrac task details like due date, priority, and description from a user's natural language input:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
@@ -3184,6 +3324,321 @@
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">TaskDetails</span><span class="p">)</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="c1">#&gt; due_date=&#39;next Friday&#39; priority=&#39;high&#39; description=&#39;Submit quarterly report&#39;</span>
 </code></pre></div>
+<p>Let's dive a little deeper into what we're doing here.</p>
+<h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<p>Defining the schema for extraction is done via models, which are classes that inherit from <a href="https://docs.pydantic.dev/latest/concepts/models/"><code>pydantic.BaseModel</code></a>. We can then define an extractor dependent on this schema and use it to extract the schema:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">class</span> <span class="nc">BookExtractor</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Book</span><span class="p">]):</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Book</span><span class="p">]</span> <span class="o">=</span> <span class="n">Book</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;The Name of the Wind by Patrick Rothfuss.&quot;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">book</span> <span class="o">=</span> <span class="n">BookExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">Book</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">#&gt; title=&#39;The Name of the Wind&#39; author=&#39;Patrick Rothfuss&#39;</span>
+</code></pre></div>
+<p>You can use tool classes like <a href="../../api/openai/tools/#mirascope.openai.tools.OpenAITool"><code>OpenAITool</code></a> directly if you want to extract a single tool instead of just a schema (which is useful for calling attached functions).</p>
+<h3 id="field">Field<a class="headerlink" href="#field" title="Permanent link">&para;</a></h3>
+<p>You can also use <a href="https://docs.pydantic.dev/latest/concepts/fields/"><code>pydantic.Fields</code></a> to add additional information for each field in your schema. Again, this information will be included in the prompt, and we can take advantage of that:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIPrompt</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Last, First&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">class</span> <span class="nc">BookExtractor</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Book</span><span class="p">]):</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Book</span><span class="p">]</span> <span class="o">=</span> <span class="n">Book</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;The Name of the Wind by Patrick Rothfuss.&quot;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">book</span> <span class="o">=</span> <span class="n">BookExtractor</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">Book</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1">#&gt; title=&#39;The Name of the Wind&#39; author=&#39;Rothfuss, Patrick&#39;</span>
+</code></pre></div>
+<p>Notice how instead of “Patrick Rothfuss” the extracted author is “Rothfuss, Patrick” as desired.</p>
+<h2 id="extracting-base-types">Extracting base types<a class="headerlink" href="#extracting-base-types" title="Permanent link">&para;</a></h2>
+<p>Mirascope also makes it possible to extract base types without defining a <code>pydantic.BaseModel</code> with the same exact format for extraction:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend some science fiction books.&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">books</span> <span class="o">=</span> <span class="n">BookRecommendation</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">books</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">#&gt; [&#39;Dune&#39;, &#39;Neuromancer&#39;, &quot;Ender&#39;s Game&quot;, &quot;The Hitchhiker&#39;s Guide to the Galaxy&quot;, &#39;Foundation&#39;, &#39;Snow Crash&#39;]</span>
+</code></pre></div>
+<p>We currently support: <code>str</code>, <code>int</code>, <code>float</code>, <code>bool</code>, <code>list</code>, <code>set</code>, <code>tuple</code>, and <code>Enum</code>.</p>
+<p>We also support using <code>Union</code>, <code>Literal</code>, and <code>Annotated</code> </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’re using <code>mypy</code> you’ll need to add <code>#  type: ignore</code> due to how these types are handled differently by Python.</p>
+</div>
+<h3 id="using-enum-or-literal-for-classification">Using <code>Enum</code> or <code>Literal</code> for classification<a class="headerlink" href="#using-enum-or-literal-for-classification" title="Permanent link">&para;</a></h3>
+<p>One nice feature of extracting base types is that we can easily use <code>Enum</code> or <code>Literal</code> to define a set of labels that the model should use to classify the prompt. For example, let’s classify whether or not some email text is spam:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># from typing import Literal</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Label = Literal[&quot;is spam&quot;, &quot;is not spam&quot;]</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">class</span> <span class="nc">Label</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">NOT_SPAM</span> <span class="o">=</span> <span class="s2">&quot;not_spam&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">SPAM</span> <span class="o">=</span> <span class="s2">&quot;spam&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">class</span> <span class="nc">NotSpam</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Label</span><span class="p">]):</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Label</span><span class="p">]</span> <span class="o">=</span> <span class="n">Label</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Your car insurance payment has been processed. Thank you for your business.&quot;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">class</span> <span class="nc">Spam</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Label</span><span class="p">]):</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Label</span><span class="p">]</span> <span class="o">=</span> <span class="n">Label</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;I can make you $1000 in just an hour. Interested?&quot;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c1"># assert NotSpam().extract() == &quot;is not spam&quot;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="c1"># assert Spam().extract() == &quot;is spam&quot;</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="k">assert</span> <span class="n">NotSpam</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span> <span class="o">==</span> <span class="n">Label</span><span class="o">.</span><span class="n">NOT_SPAM</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="k">assert</span> <span class="n">Spam</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span> <span class="o">==</span> <span class="n">Label</span><span class="o">.</span><span class="n">SPAM</span>
+</code></pre></div>
+<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
+<p>When extracting structured information from LLMs, it’s important that we validate the extracted information, especially the types. We want to make sure that if we’re looking for an integer that we actual get an <code>int</code> back. One of the primary benefits of building on top of <a href="https://pydantic.dev/">Pydantic</a> is that it makes validation easy — in fact, we get validation on types out-of-the-box.</p>
+<p>We recommend you check out their <a href="https://docs.pydantic.dev/latest/concepts/validators/">thorough documentation</a> for detailed information on everything you can do with their validators. This document will be brief and specifically related to LLM extraction to avoid duplication.</p>
+<h3 id="validating-types">Validating Types<a class="headerlink" href="#validating-types" title="Permanent link">&para;</a></h3>
+<p>When we extract information — for base types, <code>BaseModel</code>, or any of our tools — everything is powered by Pydantic. This means that we automatically get type validation and can handle it gracefully:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">price</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Book</span><span class="p">]):</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Book</span><span class="p">]</span> <span class="o">=</span> <span class="n">Book</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a book.&quot;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">book</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">Book</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="c1">#&gt; title=&#39;The Alchemist&#39; price=12.99</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>  <span class="c1">#&gt; 1 validation error for Book</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>  <span class="c1">#  price</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>  <span class="c1">#    Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value=&#39;standard&#39;, input_type=str]</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>  <span class="c1">#      For further information visit https://errors.pydantic.dev/2.6/v/float_parsing</span>
+</code></pre></div>
+<p>Now we can proceed with our extracted information knowing that it will behave as the expected type.</p>
+<h3 id="custom-validation">Custom Validation<a class="headerlink" href="#custom-validation" title="Permanent link">&para;</a></h3>
+<p>It’s often useful to write custom validation when working with LLMs so that we can automatically handle things that are difficult to hard-code. For example, consider determining whether the generated content adheres to your company’s guidelines. It’s a difficult task to determine this, but an LLM is well-suited to do the task well.</p>
+<p>We can use an LLM to make the determination by adding an <a href="https://docs.pydantic.dev/latest/api/functional_validators/#pydantic.functional_validators.AfterValidator"><code>AfterValidator</code></a> to our extracted output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Type</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AfterValidator</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">class</span> <span class="nc">Label</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">HAPPY</span> <span class="o">=</span> <span class="s2">&quot;happy story&quot;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">SAD</span> <span class="o">=</span> <span class="s2">&quot;sad story&quot;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">class</span> <span class="nc">Sentiment</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">Label</span><span class="p">]):</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Label</span><span class="p">]</span> <span class="o">=</span> <span class="n">Label</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Is the following happy or sad? </span><span class="si">{text}</span><span class="s2">.&quot;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="k">def</span> <span class="nf">validate_happy</span><span class="p">(</span><span class="n">story</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the content follows the guidelines.&quot;&quot;&quot;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">label</span> <span class="o">=</span> <span class="n">Sentiment</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">story</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="k">assert</span> <span class="n">label</span> <span class="o">==</span> <span class="n">Label</span><span class="o">.</span><span class="n">HAPPY</span><span class="p">,</span> <span class="s2">&quot;Story wasn&#39;t happy.&quot;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="k">return</span> <span class="n">story</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="k">class</span> <span class="nc">HappyStory</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="n">story</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AfterValidator</span><span class="p">(</span><span class="n">validate_happy</span><span class="p">)]</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="k">class</span> <span class="nc">StoryTeller</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">HappyStory</span><span class="p">]):</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">extract_template</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">HappyStory</span><span class="p">]</span> <span class="o">=</span> <span class="n">HappyStory</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please tell me a story that&#39;s really sad.&quot;</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>    <span class="n">story</span> <span class="o">=</span> <span class="n">StoryTeller</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>    <span class="c1"># &gt; 1 validation error for HappyStoryTool</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>    <span class="c1">#   story</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>    <span class="c1">#     Assertion failed, Story wasn&#39;t happy. [type=assertion_error, input_value=&quot;Once upon a time, there ...er every waking moment.&quot;, input_type=str]</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>    <span class="c1">#       For further information visit https://errors.pydantic.dev/2.6/v/assertion_error</span>
+</code></pre></div>
+<h2 id="streaming-tools-and-structured-outputs">Streaming Tools and Structured Outputs<a class="headerlink" href="#streaming-tools-and-structured-outputs" title="Permanent link">&para;</a></h2>
+<p>When using <a href="../tools_%28function_calling%29/">tools (function calling)</a> or <a href="./">extracting structured information</a>, there are many instances in which you will want to stream the results. For example, consider making a call to an LLM that responds with multiple tool calls. Your system can have more real-time behavior if you can call each tool as it's returned instead of having to wait for all of them to be generated at once. Another example would be when returning structured information to a UI. Streaming the information enables real-time generative UI that can be generated as the fields are streamed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently streaming tools is only supported for OpenAI and Anthropic. We will aim to add support for other model providers when available in their APIs.</p>
+</div>
+<h3 id="streaming-tools-function-calling">Streaming Tools (Function Calling)<a class="headerlink" href="#streaming-tools-function-calling" title="Permanent link">&para;</a></h3>
+<p>To stream tools, first call <code>stream</code> instead of <code>call</code> for an LLM call with tools. Then use the matching provider's tool stream class to stream the tools:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span><span class="p">,</span> <span class="n">OpenAICallParams</span><span class="p">,</span> <span class="n">OpenAIToolStream</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">def</span> <span class="nf">print_book</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">author</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Prints the title and author of a book.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">Author: </span><span class="si">{</span><span class="n">author</span><span class="si">}</span><span class="se">\n</span><span class="s2">Description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend some books to read.&quot;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="n">call_params</span> <span class="o">=</span> <span class="n">OpenAICallParams</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">print_book</span><span class="p">])</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">()</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="n">tool_stream</span> <span class="o">=</span> <span class="n">OpenAIToolStream</span><span class="o">.</span><span class="n">from_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tool_stream</span><span class="p">:</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="n">tool</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="o">**</span><span class="n">tool</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="c1">#&gt; Title: The Name of the Wind\nAuthor: Patrick Rothfuss\nDescription: ...</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c1">#&gt; Title: Dune\nAuthor: Frank Herbert\nDescription: ...</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="c1">#&gt; ...</span>
+</code></pre></div>
+<h4 id="streaming-partial-tools">Streaming Partial Tools<a class="headerlink" href="#streaming-partial-tools" title="Permanent link">&para;</a></h4>
+<p>Sometimes you may want to stream partial tools as well (i.e. the unfinished tool call with <code>None</code> for arguments that haven't yet been streamed). This can be useful for example when observing an agent's flow in real-time. You can simple set <code>allow_partial=True</code> to access this feature. In the following code example, we stream each partial tool and update a live console, printing each full tool call before moving on to the next:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">from</span> <span class="nn">rich.live</span> <span class="kn">import</span> <span class="n">Live</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span><span class="p">,</span> <span class="n">OpenAICallParams</span><span class="p">,</span> <span class="n">OpenAIToolStream</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="k">def</span> <span class="nf">print_book</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">author</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Prints the title and author of a book.&quot;&quot;&quot;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">Author: </span><span class="si">{</span><span class="n">author</span><span class="si">}</span><span class="se">\n</span><span class="s2">Description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend some books to read.&quot;</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="n">call_params</span> <span class="o">=</span> <span class="n">OpenAICallParams</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">print_book</span><span class="p">])</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="hll">
+</span><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">()</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="n">tool_stream</span> <span class="o">=</span> <span class="n">OpenAIToolStream</span><span class="o">.</span><span class="n">from_stream</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="k">with</span> <span class="n">Live</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">refresh_per_second</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="k">as</span> <span class="n">live</span><span class="p">:</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>    <span class="n">partial_tools</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="mi">0</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>    <span class="n">previous_tool</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>    <span class="k">for</span> <span class="n">partial_tool</span> <span class="ow">in</span> <span class="n">tool_stream</span><span class="p">:</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>        <span class="k">if</span> <span class="n">partial_tool</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>            <span class="n">partial_tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>            <span class="k">continue</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>        <span class="n">partial_tools</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">partial_tool</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>        <span class="n">live</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-----------------------------</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>                <span class="p">[</span><span class="n">pt</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="o">**</span><span class="n">pt</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">partial_tools</span><span class="p">]</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>            <span class="p">)</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>        <span class="p">)</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="streaming-pydantic-models">Streaming Pydantic Models<a class="headerlink" href="#streaming-pydantic-models" title="Permanent link">&para;</a></h3>
+<p>You can also stream structured outputs when using an extractor. Simply call the <code>stream</code> function to stream partial outputs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Type</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIExtractor</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">class</span> <span class="nc">TaskDetails</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">priority</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">]</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">due_date</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="k">class</span> <span class="nc">TaskExtractor</span><span class="p">(</span><span class="n">OpenAIExtractor</span><span class="p">[</span><span class="n">TaskDetails</span><span class="p">]):</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">TaskDetails</span><span class="p">]</span> <span class="o">=</span> <span class="n">TaskDetails</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="s2">    Please extract the task details:</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="s2">    </span><span class="si">{task}</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="s2">    &quot;&quot;&quot;</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="n">task_description</span> <span class="o">=</span> <span class="s2">&quot;Submit quarterly report by next Friday. Task is high priority.&quot;</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">TaskExtractor</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_description</span><span class="p">)</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="k">for</span> <span class="n">partial_model</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">partial_model</span><span class="p">)</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="c1">#&gt; title=&#39;Submit quarterly report&#39; priority=None due_date=None</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="c1">#&gt; title=&#39;Submit quarterly report&#39; priority=&#39;high&#39; due_date=None</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="c1">#&gt; title=&#39;Submit quarterly report&#39; priority=&#39;high&#39; due_date=&#39;next Friday&#39;</span>
+</code></pre></div>
+<h2 id="generating-synthetic-data">Generating Synthetic Data<a class="headerlink" href="#generating-synthetic-data" title="Permanent link">&para;</a></h2>
+<p>In the above examples, we’re extracting information present in the prompt text into structured form. We can also use <code>extract</code> to generate structured information from a prompt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAIPrompt</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A science fiction book.&quot;&quot;&quot;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">OpenAIPrompt</span><span class="p">[</span><span class="n">Book</span><span class="p">]):</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="n">extract_schema</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Book</span><span class="p">]</span> <span class="o">=</span> <span class="n">Book</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a book.&quot;</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">book</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">()</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">Book</span><span class="p">)</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="c1">#&gt; title=&#39;Dune&#39; author=&#39;Frank Herbert&#39;</span>
+</code></pre></div>
+<p>Notice that the docstring for the <code>Book</code> schema specified a science fiction book, which resulted in the model recommending a science fiction book. The docstring gets included with the prompt as part of the schema definition, and you can use this to your advantage for better prompting.</p>
 
 
 
@@ -3221,7 +3676,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../defining_tools_%28function_calls%29/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Defining tools (function calls)">
+          <a href="../tools_%28function_calling%29/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tools (Function Calling)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -3231,20 +3686,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Defining tools (function calls)
+                Tools (Function Calling)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../defining_and_extracting_schemas/" class="md-footer__link md-footer__link--next" aria-label="Next: Defining and extracting schemas">
+          <a href="../rag_%28retrieval_augmented_generation%29/" class="md-footer__link md-footer__link--next" aria-label="Next: RAG (Retrieval Augmented Generation)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Defining and extracting schemas
+                RAG (Retrieval Augmented Generation)
               </div>
             </div>
             <div class="md-footer__button md-icon">
