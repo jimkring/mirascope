@@ -5009,7 +5009,7 @@ developer experience.</p>
 <a id="__codelineno-0-163" name="__codelineno-0-163"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">finish_reason</span> <span class="o">==</span> <span class="s2">&quot;MAX_TOKENS&quot;</span><span class="p">:</span>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
 <a id="__codelineno-0-165" name="__codelineno-0-165"></a>                <span class="s2">&quot;Generation stopped with MAX_TOKENS finish reason. This means that the &quot;</span>
-<a id="__codelineno-0-166" name="__codelineno-0-166"></a>                <span class="s2">&quot;response hit the token limit before completion, &quot;</span>
+<a id="__codelineno-0-166" name="__codelineno-0-166"></a>                <span class="s2">&quot;response hit the token limit before completion.&quot;</span>
 <a id="__codelineno-0-167" name="__codelineno-0-167"></a>            <span class="p">)</span>
 <a id="__codelineno-0-168" name="__codelineno-0-168"></a>
 <a id="__codelineno-0-169" name="__codelineno-0-169"></a>        <span class="n">extracted_tools</span> <span class="o">=</span> <span class="p">[]</span>
