@@ -642,18 +642,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chaining-using-properties" class="md-nav__link">
+  <a href="#chaining-using-properties-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      Chaining Using Properties
+      Chaining using properties (recommended)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chaining-using-functions" class="md-nav__link">
+  <a href="#chaining-directly-function-chaining" class="md-nav__link">
     <span class="md-ellipsis">
-      Chaining Using Functions
+      Chaining directly (function chaining)
     </span>
   </a>
   
@@ -3018,18 +3018,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chaining-using-properties" class="md-nav__link">
+  <a href="#chaining-using-properties-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      Chaining Using Properties
+      Chaining using properties (recommended)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chaining-using-functions" class="md-nav__link">
+  <a href="#chaining-directly-function-chaining" class="md-nav__link">
     <span class="md-ellipsis">
-      Chaining Using Functions
+      Chaining directly (function chaining)
     </span>
   </a>
   
@@ -3054,90 +3054,125 @@
 
 
 <h1 id="chaining-calls">Chaining Calls<a class="headerlink" href="#chaining-calls" title="Permanent link">&para;</a></h1>
-<p>To achieve better results, it is often worth splitting up a large task into multiple subtasks that can be chained together. While some chains can be simple, chains for more difficult tasks can quickly become complex. With Mirascope, chaining calls together is as simple as writing properties and/or functions, giving you full control over how you construct your chains. This is extremely important as chains get more complex.</p>
-<h2 id="chaining-using-properties">Chaining Using Properties<a class="headerlink" href="#chaining-using-properties" title="Permanent link">&para;</a></h2>
-<p>To take full advantage of Mirascope's classes, we recommend writing chains using properties. This provides a clean way of writing even complex chains where each call depends on the previous call in the chain. You can write arbitrarily long chains while maintaining full control and access to every aspect of the chain -- all the way down to every local variable. No additional classes are necessary to gain such access.</p>
+<p>To achieve better results, it is often worth splitting up a large task into multiple subtasks (LLM calls) that can be chained together. While some chains can be simple, chains for more difficult tasks can quickly become complex. With Mirascope, you have the option of chaining calls directly, but we recommend using properties to give you the power of caching previous responses as well as colocating all inputs into one prompt - this is extremely important as chains get more complex. Either way, we give you full control over how you construct your chains.</p>
+<h2 id="chaining-using-properties-recommended">Chaining using properties (recommended)<a class="headerlink" href="#chaining-using-properties-recommended" title="Permanent link">&para;</a></h2>
+<p>To take full advantage of Mirascope's classes, we recommend writing chains using properties. This provides a clean way of writing complex chains where each call depends on the previous call in the chain, allowing you to call the entire chain at once while specifying every input simultaneously. In addition, you can use the <code>@cached_property</code> decorator to cache the result of each call as well as the <code>@computed_field</code> decorator to include the output at every step of the chain in the final dump.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">os</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">cached_property</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span><span class="p">,</span> <span class="n">OpenAICallParams</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">computed_field</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span> <span class="nc">ChefSelector</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Name a chef who is really good at cooking </span><span class="si">{food_type}</span><span class="s2"> food&quot;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">call_params</span> <span class="o">=</span> <span class="n">OpenAICallParams</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo-0125&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">class</span> <span class="nc">ChefSelector</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s2">    Name a chef who is really good at cooking </span><span class="si">{food_type}</span><span class="s2"> food.</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s2">    Give me just the name.</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">class</span> <span class="nc">RecipeRecommender</span><span class="p">(</span><span class="n">ChefSelector</span><span class="p">):</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">    SYSTEM:</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">    Imagine that you are chef </span><span class="si">{chef}</span><span class="s2">.</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">    Your task is to recommend recipes that you, </span><span class="si">{chef}</span><span class="s2">, would be excited to serve.</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">    USER:</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s2">    Recommend a </span><span class="si">{food_type}</span><span class="s2"> recipe using </span><span class="si">{ingredient}</span><span class="s2">.</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s2">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">class</span> <span class="nc">RecipeRecommender</span><span class="p">(</span><span class="n">ChefSelector</span><span class="p">):</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s2">    SYSTEM:</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s2">    Imagine that you are chef </span><span class="si">{chef}</span><span class="s2">.</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s2">    Your task is to recommend recipes that you, </span><span class="si">{chef}</span><span class="s2">, would be excited to serve.</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s2">    USER:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s2">    Recommend a recipe using </span><span class="si">{ingredient}</span><span class="s2">.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s2">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="nd">@cached_property</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="k">def</span> <span class="nf">chef</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses `ChefSelector` to select the chef based on the food type.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="k">return</span> <span class="n">ChefSelector</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">food_type</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">response</span> <span class="o">=</span> <span class="n">RecipeRecommender</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="s2">&quot;japanese&quot;</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="s2">&quot;apples&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="c1"># &gt; Certainly! Here&#39;s a recipe for a delicious and refreshing Japanese Apple Salad: ...</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="nd">@computed_field</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="nd">@cached_property</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="k">def</span> <span class="nf">chef</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses `ChefSelector` to select the chef based on the food type.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="k">return</span> <span class="n">ChefSelector</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">food_type</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="n">recommender</span> <span class="o">=</span> <span class="n">RecipeRecommender</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="s2">&quot;japanese&quot;</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="s2">&quot;apples&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">recommender</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="nb">print</span><span class="p">(</span><span class="n">recipe</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="c1"># &gt; Certainly! Here&#39;s a recipe for a delicious and refreshing Japanese Apple Salad: ...</span>
 </code></pre></div>
-<h2 id="chaining-using-functions">Chaining Using Functions<a class="headerlink" href="#chaining-using-functions" title="Permanent link">&para;</a></h2>
-<p>You can also chain calls together like you would any normal chain of functions in Python. This is not reusable out of the box like chaining with properties, but it's easy enough to wrap the chain in a function for reusability as necessary:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span><span class="p">,</span> <span class="n">OpenAICallParams</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">class</span> <span class="nc">ChefSelector</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Name a chef who is really good at cooking </span><span class="si">{food_type}</span><span class="s2"> food&quot;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">call_params</span> <span class="o">=</span> <span class="n">OpenAICallParams</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo-0125&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">class</span> <span class="nc">RecipeRecommender</span><span class="p">(</span><span class="n">ChefSelector</span><span class="p">):</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s2">    SYSTEM:</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s2">    Imagine that you are chef </span><span class="si">{chef}</span><span class="s2">.</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s2">    Your task is to recommend recipes that you, </span><span class="si">{chef}</span><span class="s2">, would be excited to serve.</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s2">    USER:</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s2">    Recommend a </span><span class="si">{food_type}</span><span class="s2"> recipe using </span><span class="si">{ingredient}</span><span class="s2">.</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s2">    &quot;&quot;&quot;</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    <span class="n">chef</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="k">def</span> <span class="nf">recommend_recipe</span><span class="p">(</span><span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates a recipe recommendation for `food_type` using `ingredient`.&quot;&quot;&quot;</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="n">selector</span> <span class="o">=</span> <span class="n">ChefSelector</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="n">food_type</span><span class="p">)</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="n">chef</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>    <span class="n">recommender</span> <span class="o">=</span> <span class="n">RecipeRecommender</span><span class="p">(</span><span class="n">chef</span><span class="o">=</span><span class="n">chef</span><span class="p">,</span> <span class="n">food_type</span><span class="o">=</span><span class="n">food_type</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="n">ingredient</span><span class="p">)</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="k">return</span> <span class="n">recommender</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">recommend_recipe</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="s2">&quot;japanese&quot;</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="s2">&quot;apples&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="nb">print</span><span class="p">(</span><span class="n">recipe</span><span class="p">)</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="c1"># &gt; Certainly! Here&#39;s a recipe for a delicious and refreshing Wagyu Beef and Apple roll: ...</span>
+<p>And, since we used the <code>@computed_field</code> decorator, we can see the entire chain in the dump:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">recommender</span><span class="o">.</span><span class="n">dump</span><span class="p">())</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">#&gt; {</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">#&gt;   &quot;tags&quot;: [],</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">#&gt;   &quot;template&quot;: &quot;SYSTEM:\nImagine that you are chef {chef}.\nYour task is to recommend recipes that you,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">#&gt;     {chef}, would be excited to serve.\n\nUSER:\nRecommend a recipe using {ingredient}.&quot;,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">#&gt;   &quot;inputs&quot;: {</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">#&gt;     &quot;food_type&quot;: &quot;japanese&quot;,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">#&gt;     &quot;ingredient&quot;: &quot;apples&quot;,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">#&gt;     &quot;chef&quot;: &quot;Masaharu Morimoto&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">#&gt;   }</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">#&gt; }</span>
+</code></pre></div>
+<h2 id="chaining-directly-function-chaining">Chaining directly (function chaining)<a class="headerlink" href="#chaining-directly-function-chaining" title="Permanent link">&para;</a></h2>
+<p>In a pinch, nothing is stopping you from making one call, then passing the output of that call into the next call. For simple use cases, this "brute force" method can be the easiest way to chain calls; however, you miss out on the ability to cache previous responses to save on time and token usage as well as colocating all inputs along the chain into one prompt.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">mirascope.openai</span> <span class="kn">import</span> <span class="n">OpenAICall</span><span class="p">,</span> <span class="n">OpenAICallParams</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">class</span> <span class="nc">ChefSelector</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s2">    Name a chef who is really good at cooking </span><span class="si">{food_type}</span><span class="s2"> food.</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s2">    Give me just the name.</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s2">    &quot;&quot;&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">class</span> <span class="nc">RecipeRecommender</span><span class="p">(</span><span class="n">OpenAICall</span><span class="p">):</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s2">    SYSTEM:</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s2">    Imagine that you are chef </span><span class="si">{chef}</span><span class="s2">.</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s2">    Your task is to recommend recipes that you, </span><span class="si">{chef}</span><span class="s2">, would be excited to serve.</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s2">    USER:</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s2">    Recommend a recipe using </span><span class="si">{ingredient}</span><span class="s2">.</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s2">    &quot;&quot;&quot;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="n">chef</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="n">selector</span> <span class="o">=</span> <span class="n">ChefSelector</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="s2">&quot;japanese&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="n">chef</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="nb">print</span><span class="p">(</span><span class="n">chef</span><span class="p">)</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="c1">#&gt; Masaharu Morimoto.</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="n">recommender</span> <span class="o">=</span> <span class="n">RecipeRecommender</span><span class="p">(</span><span class="n">chef</span><span class="o">=</span><span class="n">chef</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="s2">&quot;apples&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">recommender</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="nb">print</span><span class="p">(</span><span class="n">recipe</span><span class="p">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="c1">#&gt; Certainly! Here&#39;s a recipe for a delicious and refreshing Wagyu Beef and Apple roll: ...</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For reusability, you can always wrap the chain flow in a function like you would for any other functions, e.g.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span> <span class="nf">recommend_recipe</span><span class="p">(</span><span class="n">food_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ingredient</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">chef</span> <span class="o">=</span> <span class="n">ChefSelector</span><span class="p">(</span><span class="n">food_type</span><span class="o">=</span><span class="s2">&quot;japanese&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">return</span>  <span class="n">RecipeRecommender</span><span class="p">(</span><span class="n">chef</span><span class="o">=</span><span class="n">chef</span><span class="p">,</span> <span class="n">ingredient</span><span class="o">=</span><span class="s2">&quot;apples&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">content</span>
+</code></pre></div>
+</div>
+<p>While this works, we cannot see the initial input of <code>food_type="japanese"</code> from the dump of the final call. If you plan on logging your results, you would have to inefficiently log every call along the chain to see all relevant inputs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">recommender</span><span class="o">.</span><span class="n">dump</span><span class="p">())</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">#&gt; {</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#&gt;    &quot;tags&quot;: [],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">#&gt;    &quot;template&quot;: &quot;SYSTEM:\nImagine that you are chef {chef}.\nYour task is to recommend recipes that you,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">#&gt;      {chef}, would be excited to serve.\n\nUSER:\nRecommend a {food_type} recipe using {ingredient}.&quot;,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">#&gt;    &quot;inputs&quot;: {</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">#&gt;      &quot;chef&quot;: &quot;Masaharu Morimoto.&quot;,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">#&gt;      &quot;ingredient&quot;: &quot;apples&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">#&gt;    }</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">#&gt; }</span>
 </code></pre></div>
 
 

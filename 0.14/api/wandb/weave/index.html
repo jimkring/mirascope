@@ -3118,7 +3118,10 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/wandb/weave.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-44">44</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
 <span class="normal"><a href="#__codelineno-0-45">45</a></span>
 <span class="normal"><a href="#__codelineno-0-46">46</a></span>
 <span class="normal"><a href="#__codelineno-0-47">47</a></span>
@@ -3151,46 +3154,43 @@
 <span class="normal"><a href="#__codelineno-0-74">74</a></span>
 <span class="normal"><a href="#__codelineno-0-75">75</a></span>
 <span class="normal"><a href="#__codelineno-0-76">76</a></span>
-<span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span>
-<span class="normal"><a href="#__codelineno-0-80">80</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="k">def</span> <span class="nf">with_weave</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps base classes to automatically use weave.</span>
+<span class="normal"><a href="#__codelineno-0-77">77</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="k">def</span> <span class="nf">with_weave</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps base classes to automatically use weave.</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    Supported base classes: `BaseCall`, `BaseExtractor`, `BaseVectorStore`,</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    `BaseChunker`, `BaseEmbedder`</span>
 <a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Supported base classes: `BaseCall`, `BaseExtractor`, `BaseVectorStore`,</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    `BaseChunker`, `BaseEmbedder`</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">    ```python</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">    import weave</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">    ```python</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    import weave</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">    from mirascope.openai import OpenAICall</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    from mirascope.wandb import with_weave</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">    from mirascope.openai import OpenAICall</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    from mirascope.wandb import with_weave</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">    weave.init(&quot;my-project&quot;)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">    weave.init(&quot;my-project&quot;)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">    @with_weave</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    class BookRecommender(OpenAICall):</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        prompt_template = &quot;Please recommend some {genre} books&quot;</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">    @with_weave</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">    class BookRecommender(OpenAICall):</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        prompt_template = &quot;Please recommend some {genre} books&quot;</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        genre: str</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        genre: str</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">    recommender = BookRecommender(genre=&quot;fantasy&quot;)</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">    response = recommender.call()  # this will automatically get logged with weave</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">    print(response.content)</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">    ```</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">get_class_functions</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">weave</span><span class="o">.</span><span class="n">op</span><span class="p">()(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">)))</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;_provider&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="o">!=</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">]}</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>            <span class="p">)</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">    recommender = BookRecommender(genre=&quot;fantasy&quot;)</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    response = recommender.call()  # this will automatically get logged with weave</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">    print(response.content)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">get_class_functions</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">weave</span><span class="o">.</span><span class="n">op</span><span class="p">()(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">)))</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;_provider&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="o">!=</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="s2">&quot;weave&quot;</span><span class="p">]}</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>            <span class="p">)</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>

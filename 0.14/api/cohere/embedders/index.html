@@ -3182,8 +3182,7 @@ embed-multilingual-v2.0         768</p>
 
             <details class="quote">
               <summary>Source code in <code>mirascope/cohere/embedders.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
 <span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
 <span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
 <span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
@@ -3266,91 +3265,92 @@ embed-multilingual-v2.0         768</p>
 <span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
 <span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
 <span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="k">class</span> <span class="nc">CohereEmbedder</span><span class="p">(</span><span class="n">BaseEmbedder</span><span class="p">[</span><span class="n">CohereEmbeddingResponse</span><span class="p">]):</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Cohere Embedder</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    model                           max_dimensions</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    embed-english-v3.0              1024</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    embed-multilingual-v3.0         1024</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    embed-english-light-v3.0        384</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    embed-multilingual-light-v3.0   384</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    embed-english-v2.0              4096</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    embed-english-light-v2.0        1024</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    embed-multilingual-v2.0         768</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">    ```python</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    import os</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">    from mirascope.cohere import CohereEmbedder</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">    os.environ[&quot;CO_API_KEY&quot;] = &quot;YOUR_COHERE_API_KEY&quot;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">    cohere_embedder = CohereEmbedder()</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">    response = cohere_embedder.embed([&quot;your text to embed&quot;])</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    print(response)</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">    ```</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="n">dimensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1024</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="n">embedding_params</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">CohereEmbeddingParams</span><span class="p">]</span> <span class="o">=</span> <span class="n">CohereEmbeddingParams</span><span class="p">(</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;embed-english-v3.0&quot;</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="p">)</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="n">_provider</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cohere&quot;</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the embedder with multiple inputs&quot;&quot;&quot;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>        <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_client</span><span class="p">(</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>            <span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>        <span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>            <span class="k">else</span> <span class="kc">None</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="p">)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span><span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span><span class="p">)</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>            <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="p">)</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">embed_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Asynchronously call the embedder with multiple inputs&quot;&quot;&quot;</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_async_client</span><span class="p">(</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a>            <span class="n">AsyncClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="p">)</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="k">else</span> <span class="kc">None</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="p">)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>        <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>            <span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>        <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>            <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a>            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>            <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>            <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>        <span class="p">)</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]:</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the embedder with a input</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        Chroma expects parameter to be `input`.</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">embeddings</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="k">return</span> <span class="n">embeddings</span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="k">class</span> <span class="nc">CohereEmbedder</span><span class="p">(</span><span class="n">BaseEmbedder</span><span class="p">[</span><span class="n">CohereEmbeddingResponse</span><span class="p">]):</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Cohere Embedder</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    model                           max_dimensions</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    embed-english-v3.0              1024</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    embed-multilingual-v3.0         1024</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    embed-english-light-v3.0        384</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    embed-multilingual-light-v3.0   384</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    embed-english-v2.0              4096</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    embed-english-light-v2.0        1024</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">    embed-multilingual-v2.0         768</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    ```python</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">    import os</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    from mirascope.cohere import CohereEmbedder</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">    os.environ[&quot;CO_API_KEY&quot;] = &quot;YOUR_COHERE_API_KEY&quot;</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">    cohere_embedder = CohereEmbedder()</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    response = cohere_embedder.embed([&quot;your text to embed&quot;])</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">    print(response)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="n">dimensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1024</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="n">embedding_params</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">CohereEmbeddingParams</span><span class="p">]</span> <span class="o">=</span> <span class="n">CohereEmbeddingParams</span><span class="p">(</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;embed-english-v3.0&quot;</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="n">_provider</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cohere&quot;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the embedder with multiple inputs&quot;&quot;&quot;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>        <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_client</span><span class="p">(</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>            <span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="p">)</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>            <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span><span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>            <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>            <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">embed_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Asynchronously call the embedder with multiple inputs&quot;&quot;&quot;</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>        <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_async_client</span><span class="p">(</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>            <span class="n">AsyncClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="p">)</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>            <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="p">)</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>        <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>            <span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="p">)</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>            <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>            <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>            <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>        <span class="p">)</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]:</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the embedder with a input</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        Chroma expects parameter to be `input`.</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">embeddings</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="k">return</span> <span class="n">embeddings</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -3384,8 +3384,7 @@ embed-multilingual-v2.0         768</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/cohere/embedders.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
 <span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
 <span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
 <span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
@@ -3393,16 +3392,17 @@ embed-multilingual-v2.0         768</p>
 <span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
 <span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
 <span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>    <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]:</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Call the embedder with a input</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">    Chroma expects parameter to be `input`.</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="n">embeddings</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">embeddings</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    <span class="k">return</span> <span class="n">embeddings</span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]:</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Call the embedder with a input</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">    Chroma expects parameter to be `input`.</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    <span class="n">embeddings</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">embeddings</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="k">return</span> <span class="n">embeddings</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3426,8 +3426,7 @@ embed-multilingual-v2.0         768</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/cohere/embedders.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-49">49</a></span>
 <span class="normal"><a href="#__codelineno-0-50">50</a></span>
 <span class="normal"><a href="#__codelineno-0-51">51</a></span>
 <span class="normal"><a href="#__codelineno-0-52">52</a></span>
@@ -3445,26 +3444,27 @@ embed-multilingual-v2.0         768</p>
 <span class="normal"><a href="#__codelineno-0-64">64</a></span>
 <span class="normal"><a href="#__codelineno-0-65">65</a></span>
 <span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Call the embedder with multiple inputs&quot;&quot;&quot;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_client</span><span class="p">(</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>        <span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="k">else</span> <span class="kc">None</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="p">)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span><span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span><span class="p">)</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="k">def</span> <span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Call the embedder with multiple inputs&quot;&quot;&quot;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_client</span><span class="p">(</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>        <span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="p">)</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span><span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3492,8 +3492,7 @@ embed-multilingual-v2.0         768</p>
 
           <details class="quote">
             <summary>Source code in <code>mirascope/cohere/embedders.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-70">70</a></span>
 <span class="normal"><a href="#__codelineno-0-71">71</a></span>
 <span class="normal"><a href="#__codelineno-0-72">72</a></span>
 <span class="normal"><a href="#__codelineno-0-73">73</a></span>
@@ -3512,27 +3511,28 @@ embed-multilingual-v2.0         768</p>
 <span class="normal"><a href="#__codelineno-0-86">86</a></span>
 <span class="normal"><a href="#__codelineno-0-87">87</a></span>
 <span class="normal"><a href="#__codelineno-0-88">88</a></span>
-<span class="normal"><a href="#__codelineno-0-89">89</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">embed_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asynchronously call the embedder with multiple inputs&quot;&quot;&quot;</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_async_client</span><span class="p">(</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a>        <span class="n">AsyncClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="p">)</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="k">else</span> <span class="kc">None</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>    <span class="p">)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>        <span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a>        <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>        <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>    <span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-89">89</a></span>
+<span class="normal"><a href="#__codelineno-0-90">90</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">embed_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CohereEmbeddingResponse</span><span class="p">:</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asynchronously call the embedder with multiple inputs&quot;&quot;&quot;</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="n">co</span> <span class="o">=</span> <span class="n">get_wrapped_async_client</span><span class="p">(</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="n">AsyncClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">),</span> <span class="bp">self</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="p">)</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="n">embedding_type</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">embedding_types</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>    <span class="p">)</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_wrapped_call</span><span class="p">(</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="n">co</span><span class="o">.</span><span class="n">embed</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">response_type</span><span class="o">=</span><span class="n">CohereEmbeddingResponse</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>    <span class="p">)</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">embed</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_params</span><span class="o">.</span><span class="n">kwargs</span><span class="p">())</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="k">return</span> <span class="n">CohereEmbeddingResponse</span><span class="p">(</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>        <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>        <span class="n">end_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>        <span class="n">embedding_type</span><span class="o">=</span><span class="n">embedding_type</span><span class="p">,</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
