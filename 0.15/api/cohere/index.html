@@ -3472,69 +3472,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--1" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; 1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      +
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--equals" class="md-nav__link">
-    <span class="md-ellipsis">
-      equals
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirascope.cohere.CohereCallResponseChunk--_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      .
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#mirascope.cohere.CohereCallResponseChunk.citations" class="md-nav__link">
     <span class="md-ellipsis">
       citations
@@ -5635,19 +5572,25 @@ developer experience.</p>
 the implemented properties allow for simpler syntax and a convenient developer
 experience.</p>
 <p>Example:</p>
-<p>```python
-from mirascope.cohere import CohereCall</p>
-<p>class Math(CohereCall):
-    prompt_template = "What is 1 + 2?"</p>
-<p>for chunk in CohereCall().stream():
-    print(chunk.content)</p>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--1">&gt; 1<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--1" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--_1">+<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--_1" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--2">2<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--2" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--equals">equals<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--equals" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--_2"><a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--_2" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--3">3<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--3" title="Permanent link">&para;</a></h3>
-<h3 id="mirascope.cohere.CohereCallResponseChunk--_3">.<a class="headerlink" href="#mirascope.cohere.CohereCallResponseChunk--_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mirascope.cohere</span> <span class="kn">import</span> <span class="n">CohereCall</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span> <span class="nc">Math</span><span class="p">(</span><span class="n">CohereCall</span><span class="p">):</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;What is 1 + 2?&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">Math</span><span class="p">()</span><span class="o">.</span><span class="n">stream</span><span class="p">():</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">content</span> <span class="o">+=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1">#&gt; 1</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">#  1 +</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">#  1 + 2</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1">#  1 + 2 equals</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">#  1 + 2 equals</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1">#  1 + 2 equals 3</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1">#  1 + 2 equals 3.</span>
+</code></pre></div>
 
             <details class="quote">
               <summary>Source code in <code>mirascope/cohere/types.py</code></summary>
@@ -5745,7 +5688,9 @@ from mirascope.cohere import CohereCall</p>
 <span class="normal"><a href="#__codelineno-0-308">308</a></span>
 <span class="normal"><a href="#__codelineno-0-309">309</a></span>
 <span class="normal"><a href="#__codelineno-0-310">310</a></span>
-<span class="normal"><a href="#__codelineno-0-311">311</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="k">class</span> <span class="nc">CohereCallResponseChunk</span><span class="p">(</span><span class="n">BaseCallResponseChunk</span><span class="p">[</span><span class="n">StreamedChatResponse</span><span class="p">,</span> <span class="n">CohereTool</span><span class="p">]):</span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="k">class</span> <span class="nc">CohereCallResponseChunk</span><span class="p">(</span><span class="n">BaseCallResponseChunk</span><span class="p">[</span><span class="n">StreamedChatResponse</span><span class="p">,</span> <span class="n">CohereTool</span><span class="p">]):</span>
 <a id="__codelineno-0-218" name="__codelineno-0-218"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience wrapper around chat completion streaming chunks.</span>
 <a id="__codelineno-0-219" name="__codelineno-0-219"></a>
 <a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">    When using Mirascope&#39;s convenience wrappers to interact with Cohere models via</span>
@@ -5763,83 +5708,85 @@ from mirascope.cohere import CohereCall</p>
 <a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">        prompt_template = &quot;What is 1 + 2?&quot;</span>
 <a id="__codelineno-0-233" name="__codelineno-0-233"></a>
 <a id="__codelineno-0-234" name="__codelineno-0-234"></a>
-<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">    for chunk in CohereCall().stream():</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">        print(chunk.content)</span>
-<a id="__codelineno-0-237" name="__codelineno-0-237"></a>
-<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">    #&gt; 1</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">    #  +</span>
-<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">    #  2</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">    #   equals</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">    #</span>
-<a id="__codelineno-0-243" name="__codelineno-0-243"></a><span class="sd">    #  3</span>
-<a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">    #  .</span>
-<a id="__codelineno-0-245" name="__codelineno-0-245"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-246" name="__codelineno-0-246"></a>
-<a id="__codelineno-0-247" name="__codelineno-0-247"></a>    <span class="n">chunk</span><span class="p">:</span> <span class="n">SkipValidation</span><span class="p">[</span><span class="n">StreamedChatResponse</span><span class="p">]</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">    content = &quot;&quot;</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">    for chunk in Math().stream():</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a><span class="sd">        content += chunk.content</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a><span class="sd">        print(content)</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="sd">    #&gt; 1</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">    #  1 +</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">    #  1 + 2</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">    #  1 + 2 equals</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a><span class="sd">    #  1 + 2 equals</span>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">    #  1 + 2 equals 3</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a><span class="sd">    #  1 + 2 equals 3.</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-248" name="__codelineno-0-248"></a>
-<a id="__codelineno-0-249" name="__codelineno-0-249"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-250" name="__codelineno-0-250"></a>    <span class="k">def</span> <span class="nf">event_type</span><span class="p">(</span>
-<a id="__codelineno-0-251" name="__codelineno-0-251"></a>        <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-252" name="__codelineno-0-252"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span>
-<a id="__codelineno-0-253" name="__codelineno-0-253"></a>        <span class="s2">&quot;stream-start&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-254" name="__codelineno-0-254"></a>        <span class="s2">&quot;search-queries-generation&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-255" name="__codelineno-0-255"></a>        <span class="s2">&quot;search-results&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="s2">&quot;text-generation&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-257" name="__codelineno-0-257"></a>        <span class="s2">&quot;citation-generation&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-258" name="__codelineno-0-258"></a>        <span class="s2">&quot;tool-calls-generation&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-259" name="__codelineno-0-259"></a>        <span class="s2">&quot;stream-end&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-260" name="__codelineno-0-260"></a>    <span class="p">]:</span>
-<a id="__codelineno-0-261" name="__codelineno-0-261"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the type of the chunk.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-262" name="__codelineno-0-262"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">event_type</span>
-<a id="__codelineno-0-263" name="__codelineno-0-263"></a>
-<a id="__codelineno-0-264" name="__codelineno-0-264"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-265" name="__codelineno-0-265"></a>    <span class="k">def</span> <span class="nf">content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-266" name="__codelineno-0-266"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the content for the 0th choice delta.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-267" name="__codelineno-0-267"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_TextGeneration</span><span class="p">):</span>
-<a id="__codelineno-0-268" name="__codelineno-0-268"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span>
-<a id="__codelineno-0-269" name="__codelineno-0-269"></a>        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-0-270" name="__codelineno-0-270"></a>
-<a id="__codelineno-0-271" name="__codelineno-0-271"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-272" name="__codelineno-0-272"></a>    <span class="k">def</span> <span class="nf">search_queries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatSearchQuery</span><span class="p">]]:</span>
-<a id="__codelineno-0-273" name="__codelineno-0-273"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the search queries for search-query event type else None.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-274" name="__codelineno-0-274"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchQueriesGeneration</span><span class="p">):</span>
-<a id="__codelineno-0-275" name="__codelineno-0-275"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">search_queries</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-276" name="__codelineno-0-276"></a>        <span class="k">return</span> <span class="kc">None</span>
-<a id="__codelineno-0-277" name="__codelineno-0-277"></a>
-<a id="__codelineno-0-278" name="__codelineno-0-278"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-279" name="__codelineno-0-279"></a>    <span class="k">def</span> <span class="nf">search_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatSearchResult</span><span class="p">]]:</span>
-<a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the search results for search-results event type else None.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-281" name="__codelineno-0-281"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchResults</span><span class="p">):</span>
-<a id="__codelineno-0-282" name="__codelineno-0-282"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">search_results</span>
-<a id="__codelineno-0-283" name="__codelineno-0-283"></a>        <span class="k">return</span> <span class="kc">None</span>
-<a id="__codelineno-0-284" name="__codelineno-0-284"></a>
-<a id="__codelineno-0-285" name="__codelineno-0-285"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-286" name="__codelineno-0-286"></a>    <span class="k">def</span> <span class="nf">documents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatDocument</span><span class="p">]]:</span>
-<a id="__codelineno-0-287" name="__codelineno-0-287"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the documents for citation-generation event type else None.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-288" name="__codelineno-0-288"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchResults</span><span class="p">):</span>
-<a id="__codelineno-0-289" name="__codelineno-0-289"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">documents</span>
-<a id="__codelineno-0-290" name="__codelineno-0-290"></a>        <span class="k">return</span> <span class="kc">None</span>
-<a id="__codelineno-0-291" name="__codelineno-0-291"></a>
-<a id="__codelineno-0-292" name="__codelineno-0-292"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-293" name="__codelineno-0-293"></a>    <span class="k">def</span> <span class="nf">citations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatCitation</span><span class="p">]]:</span>
-<a id="__codelineno-0-294" name="__codelineno-0-294"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the citations for citation-generation event type else None.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-295" name="__codelineno-0-295"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_CitationGeneration</span><span class="p">):</span>
-<a id="__codelineno-0-296" name="__codelineno-0-296"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">citations</span>
-<a id="__codelineno-0-297" name="__codelineno-0-297"></a>        <span class="k">return</span> <span class="kc">None</span>
-<a id="__codelineno-0-298" name="__codelineno-0-298"></a>
-<a id="__codelineno-0-299" name="__codelineno-0-299"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-300" name="__codelineno-0-300"></a>    <span class="k">def</span> <span class="nf">response</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NonStreamedChatResponse</span><span class="p">]:</span>
-<a id="__codelineno-0-301" name="__codelineno-0-301"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the response for text-generation event type else None.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-302" name="__codelineno-0-302"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_StreamEnd</span><span class="p">):</span>
-<a id="__codelineno-0-303" name="__codelineno-0-303"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">response</span>
-<a id="__codelineno-0-304" name="__codelineno-0-304"></a>        <span class="k">return</span> <span class="kc">None</span>
-<a id="__codelineno-0-305" name="__codelineno-0-305"></a>
-<a id="__codelineno-0-306" name="__codelineno-0-306"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-307" name="__codelineno-0-307"></a>    <span class="k">def</span> <span class="nf">tool_calls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ToolCall</span><span class="p">]]:</span>
-<a id="__codelineno-0-308" name="__codelineno-0-308"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the partial tool calls for the 0th choice message.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-309" name="__codelineno-0-309"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_ToolCallsGeneration</span><span class="p">):</span>
-<a id="__codelineno-0-310" name="__codelineno-0-310"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">tool_calls</span>
-<a id="__codelineno-0-311" name="__codelineno-0-311"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>    <span class="n">chunk</span><span class="p">:</span> <span class="n">SkipValidation</span><span class="p">[</span><span class="n">StreamedChatResponse</span><span class="p">]</span>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a>    <span class="k">def</span> <span class="nf">event_type</span><span class="p">(</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>        <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>        <span class="s2">&quot;stream-start&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="s2">&quot;search-queries-generation&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>        <span class="s2">&quot;search-results&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>        <span class="s2">&quot;text-generation&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>        <span class="s2">&quot;citation-generation&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>        <span class="s2">&quot;tool-calls-generation&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>        <span class="s2">&quot;stream-end&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a>    <span class="p">]:</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the type of the chunk.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">event_type</span>
+<a id="__codelineno-0-265" name="__codelineno-0-265"></a>
+<a id="__codelineno-0-266" name="__codelineno-0-266"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a>    <span class="k">def</span> <span class="nf">content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-268" name="__codelineno-0-268"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the content for the 0th choice delta.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_TextGeneration</span><span class="p">):</span>
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span>
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a>        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a>
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-274" name="__codelineno-0-274"></a>    <span class="k">def</span> <span class="nf">search_queries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatSearchQuery</span><span class="p">]]:</span>
+<a id="__codelineno-0-275" name="__codelineno-0-275"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the search queries for search-query event type else None.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-276" name="__codelineno-0-276"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchQueriesGeneration</span><span class="p">):</span>
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">search_queries</span>  <span class="c1"># type: ignore</span>
+<a id="__codelineno-0-278" name="__codelineno-0-278"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-279" name="__codelineno-0-279"></a>
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-281" name="__codelineno-0-281"></a>    <span class="k">def</span> <span class="nf">search_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatSearchResult</span><span class="p">]]:</span>
+<a id="__codelineno-0-282" name="__codelineno-0-282"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the search results for search-results event type else None.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchResults</span><span class="p">):</span>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">search_results</span>
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a>
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a>    <span class="k">def</span> <span class="nf">documents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatDocument</span><span class="p">]]:</span>
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the documents for citation-generation event type else None.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_SearchResults</span><span class="p">):</span>
+<a id="__codelineno-0-291" name="__codelineno-0-291"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">documents</span>
+<a id="__codelineno-0-292" name="__codelineno-0-292"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a>
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a>    <span class="k">def</span> <span class="nf">citations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatCitation</span><span class="p">]]:</span>
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the citations for citation-generation event type else None.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_CitationGeneration</span><span class="p">):</span>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">citations</span>
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a>
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a>    <span class="k">def</span> <span class="nf">response</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NonStreamedChatResponse</span><span class="p">]:</span>
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the response for text-generation event type else None.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-304" name="__codelineno-0-304"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_StreamEnd</span><span class="p">):</span>
+<a id="__codelineno-0-305" name="__codelineno-0-305"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">response</span>
+<a id="__codelineno-0-306" name="__codelineno-0-306"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-0-307" name="__codelineno-0-307"></a>
+<a id="__codelineno-0-308" name="__codelineno-0-308"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-309" name="__codelineno-0-309"></a>    <span class="k">def</span> <span class="nf">tool_calls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ToolCall</span><span class="p">]]:</span>
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the partial tool calls for the 0th choice message.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">,</span> <span class="n">StreamedChatResponse_ToolCallsGeneration</span><span class="p">):</span>
+<a id="__codelineno-0-312" name="__codelineno-0-312"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">tool_calls</span>
+<a id="__codelineno-0-313" name="__codelineno-0-313"></a>        <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
