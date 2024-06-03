@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -3493,13 +3493,23 @@
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="p">):</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="c1"># do some work after the call</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">handle_before_call</span><span class="p">,</span> <span class="n">handle_after_call</span><span class="p">,</span> <span class="n">decorator</span><span class="p">,</span> <span class="n">custom_kwarg</span><span class="o">=</span><span class="s2">&quot;anything&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="bp">cls</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">handle_before_call</span><span class="o">=</span><span class="n">handle_before_call</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="n">handle_after_call</span><span class="o">=</span><span class="n">handle_after_call</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="n">decorator</span><span class="o">=</span><span class="n">decorator</span><span class="p">,</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="n">custom_kwarg</span><span class="o">=</span><span class="s2">&quot;anything&quot;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div>
 <p>Now let’s look at how to implement the before and after callback functions.</p>
 <h3 id="deeper-dive-on-callback-functions">Deeper dive on callback functions<a class="headerlink" href="#deeper-dive-on-callback-functions" title="Permanent link">&para;</a></h3>
-<p>There are two optional callback functions that we provide: <code>handle_before_call</code> and <code>handle_after_call</code>. One of the most important parts of a production LLM-based application is to have all your calls logged. Check out our existing <a href="https://docs.mirascope.io/latest/integrations/logfire/">integrations</a> for out-of-the-box solutions.</p>
+<p>There are four optional callback functions that we provide: <code>handle_before_call</code>, <code>handle_before_call_async</code>, <code>handle_after_call</code>, and <code>handle_after_call_async</code>. One of the most important parts of a production LLM-based application is to have all your calls logged. Check out our existing <a href="https://docs.mirascope.io/latest/integrations/logfire/">integrations</a> for out-of-the-box solutions.</p>
 <p>For more specific cases, you should fill out all the handle before/after methods as you see fit.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>handle_before_call_async</code> and <code>handle_after_call_async</code> methods should generally only be used if you are calling e.g. <code>call_async</code> or <code>stream_async</code> and need to await an async method in your handler as a result. If not, you can simply define and provide the <code>handle_before_call</code> and <code>handle_after_call</code> methods. Note that the async and sync methods are functionally equivalent and should have the same signatures beyond the async difference.</p>
+</div>
 <h3 id="handle_before_call"><code>handle_before_call</code><a class="headerlink" href="#handle_before_call" title="Permanent link">&para;</a></h3>
 <p>For manual approaches to logging, it starts at <code>handle_before_call</code> . We pass a few arguments to the user, namely the Pydantic model itself, the function that is about to be called, and the kwargs of the Mirascope class function, in addition to any custom kwargs you pass in to <code>wrap_mirascope_class_functions</code> . The below example showcases how one would use the arguments in addition to using <code>handle_before_call</code> as a <code>contextmanager</code> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
@@ -3558,16 +3568,17 @@
 <h3 id="using-your-decorator">Using your decorator<a class="headerlink" href="#using-your-decorator" title="Permanent link">&para;</a></h3>
 <p>Add the decorator to your Mirascope classes and make your call:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">mirascope.anthropic</span> <span class="kn">import</span> <span class="n">AnthropicCall</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">mirascope.base.ops_utils</span> <span class="kn">import</span> <span class="n">wrap_mirascope_class_functions</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nd">@with_saving</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nd">@with_saving</span>  <span class="c1"># function defined in previous block above</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">AnthropicCall</span><span class="p">):</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a </span><span class="si">{genre}</span><span class="s2"> book.&quot;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">genre</span><span class="p">:</span> <span class="nb">str</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="wrapping-the-llm-call">Wrapping the LLM call<a class="headerlink" href="#wrapping-the-llm-call" title="Permanent link">&para;</a></h2>
 <p>There are times where accessing just the Mirascope functions might not be sufficient. We at Mirascope value the user having full control of their application, so let’s take a look at that.</p>
@@ -3675,15 +3686,17 @@
 <a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a>
 <a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a>    <span class="k">return</span> <span class="n">decorator</span>
 <a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a>
-<a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">AnthropicCall</span><span class="p">):</span>
-<a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a </span><span class="si">{genre}</span><span class="s2"> book.&quot;</span>
-<a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a>
-<a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a>    <span class="n">genre</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a>
-<a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a>    <span class="n">configuration</span> <span class="o">=</span> <span class="n">BaseConfig</span><span class="p">(</span><span class="n">llm_ops</span><span class="o">=</span><span class="p">[</span><span class="n">wrap_llm</span><span class="p">()])</span>
-<a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a>
-<a id="__codelineno-4-109" name="__codelineno-4-109" href="#__codelineno-4-109"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-<a id="__codelineno-4-110" name="__codelineno-4-110" href="#__codelineno-4-110"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a>
+<a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">AnthropicCall</span><span class="p">):</span>
+<a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a </span><span class="si">{genre}</span><span class="s2"> book.&quot;</span>
+<a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a>
+<a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a>    <span class="n">genre</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a>
+<a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a>    <span class="n">configuration</span> <span class="o">=</span> <span class="n">BaseConfig</span><span class="p">(</span><span class="n">llm_ops</span><span class="o">=</span><span class="p">[</span><span class="n">wrap_llm</span><span class="p">()])</span>
+<a id="__codelineno-4-109" name="__codelineno-4-109" href="#__codelineno-4-109"></a>
+<a id="__codelineno-4-110" name="__codelineno-4-110" href="#__codelineno-4-110"></a>
+<a id="__codelineno-4-111" name="__codelineno-4-111" href="#__codelineno-4-111"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<a id="__codelineno-4-112" name="__codelineno-4-112" href="#__codelineno-4-112"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="combine-with-wrapping-mirascope-class-functions">Combine with Wrapping Mirascope Class Functions<a class="headerlink" href="#combine-with-wrapping-mirascope-class-functions" title="Permanent link">&para;</a></h3>
 <p>If you happen to be using the <code>@with_saving</code> decorator, you can combine the two like so:</p>
@@ -3695,8 +3708,9 @@
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">configuration</span> <span class="o">=</span> <span class="n">BaseConfig</span><span class="p">(</span><span class="n">llm_ops</span><span class="o">=</span><span class="p">[</span><span class="n">wrap_llm</span><span class="p">()])</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p>or alternatively:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">with_saving</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
@@ -3713,14 +3727,16 @@
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">)</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="k">return</span> <span class="bp">cls</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nd">@with_saving</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">AnthropicCall</span><span class="p">):</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a </span><span class="si">{genre}</span><span class="s2"> book.&quot;</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">genre</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="nd">@with_saving</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="k">class</span> <span class="nc">BookRecommender</span><span class="p">(</span><span class="n">AnthropicCall</span><span class="p">):</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="n">prompt_template</span> <span class="o">=</span> <span class="s2">&quot;Please recommend a </span><span class="si">{genre}</span><span class="s2"> book.&quot;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">genre</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="n">response</span> <span class="o">=</span> <span class="n">BookRecommender</span><span class="p">(</span><span class="n">genre</span><span class="o">=</span><span class="s2">&quot;fantasy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p>This is how our integrations are written and we'd rather implement the above ourselves so you don't have to so if there are any other tools you would like us to integrate with, create a <a href="https://github.com/Mirascope/mirascope/issues">Feature Request</a>.</p>
 
@@ -3861,7 +3877,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>

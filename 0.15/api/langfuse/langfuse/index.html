@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -3398,12 +3398,7 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/langfuse/langfuse.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-206">206</a></span>
-<span class="normal"><a href="#__codelineno-0-207">207</a></span>
-<span class="normal"><a href="#__codelineno-0-208">208</a></span>
-<span class="normal"><a href="#__codelineno-0-209">209</a></span>
-<span class="normal"><a href="#__codelineno-0-210">210</a></span>
-<span class="normal"><a href="#__codelineno-0-211">211</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-211">211</a></span>
 <span class="normal"><a href="#__codelineno-0-212">212</a></span>
 <span class="normal"><a href="#__codelineno-0-213">213</a></span>
 <span class="normal"><a href="#__codelineno-0-214">214</a></span>
@@ -3445,54 +3440,65 @@
 <span class="normal"><a href="#__codelineno-0-250">250</a></span>
 <span class="normal"><a href="#__codelineno-0-251">251</a></span>
 <span class="normal"><a href="#__codelineno-0-252">252</a></span>
-<span class="normal"><a href="#__codelineno-0-253">253</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="k">def</span> <span class="nf">with_langfuse</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps base classes to automatically use langfuse.</span>
-<a id="__codelineno-0-208" name="__codelineno-0-208"></a>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">    Supported base classes: `BaseCall`, `BaseExtractor`, `BaseVectorStore`,</span>
-<a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">    `BaseChunker`, `BaseEmbedder`</span>
-<a id="__codelineno-0-211" name="__codelineno-0-211"></a>
-<a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">    Example:</span>
+<span class="normal"><a href="#__codelineno-0-253">253</a></span>
+<span class="normal"><a href="#__codelineno-0-254">254</a></span>
+<span class="normal"><a href="#__codelineno-0-255">255</a></span>
+<span class="normal"><a href="#__codelineno-0-256">256</a></span>
+<span class="normal"><a href="#__codelineno-0-257">257</a></span>
+<span class="normal"><a href="#__codelineno-0-258">258</a></span>
+<span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span>
+<span class="normal"><a href="#__codelineno-0-261">261</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="k">def</span> <span class="nf">with_langfuse</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps base classes to automatically use langfuse.</span>
 <a id="__codelineno-0-213" name="__codelineno-0-213"></a>
-<a id="__codelineno-0-214" name="__codelineno-0-214"></a><span class="sd">    ```python</span>
-<a id="__codelineno-0-215" name="__codelineno-0-215"></a>
-<a id="__codelineno-0-216" name="__codelineno-0-216"></a><span class="sd">    from mirascope.openai import OpenAICall</span>
-<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="sd">    from mirascope.langfuse import with_langfuse</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a><span class="sd">    Supported base classes: `BaseCall`, `BaseExtractor`, `BaseVectorStore`,</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a><span class="sd">    `BaseChunker`, `BaseEmbedder`</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="sd">    Example:</span>
 <a id="__codelineno-0-218" name="__codelineno-0-218"></a>
-<a id="__codelineno-0-219" name="__codelineno-0-219"></a>
-<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">    @with_langfuse</span>
-<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">    class BookRecommender(OpenAICall):</span>
-<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">        prompt_template = &quot;Please recommend some {genre} books&quot;</span>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a><span class="sd">    ```python</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">    from mirascope.openai import OpenAICall</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">    from mirascope.langfuse import with_langfuse</span>
 <a id="__codelineno-0-223" name="__codelineno-0-223"></a>
-<a id="__codelineno-0-224" name="__codelineno-0-224"></a><span class="sd">        genre: str</span>
-<a id="__codelineno-0-225" name="__codelineno-0-225"></a>
-<a id="__codelineno-0-226" name="__codelineno-0-226"></a>
-<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">    recommender = BookRecommender(genre=&quot;fantasy&quot;)</span>
-<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">    response = recommender.call()  # this will automatically get logged with Langfuse</span>
-<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">    print(response.content)</span>
-<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">    ```</span>
-<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-232" name="__codelineno-0-232"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span>
-<a id="__codelineno-0-233" name="__codelineno-0-233"></a>        <span class="bp">cls</span><span class="p">,</span> <span class="n">handle_before_call</span><span class="p">,</span> <span class="n">handle_after_call</span><span class="p">,</span> <span class="n">observe</span><span class="p">()</span>
-<a id="__codelineno-0-234" name="__codelineno-0-234"></a>    <span class="p">)</span>
-<a id="__codelineno-0-235" name="__codelineno-0-235"></a>    <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="o">==</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-237" name="__codelineno-0-237"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-238" name="__codelineno-0-238"></a>                <span class="s2">&quot;client_wrappers&quot;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a>                    <span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">client_wrappers</span><span class="p">,</span>
-<a id="__codelineno-0-240" name="__codelineno-0-240"></a>                    <span class="s2">&quot;langfuse&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a>                <span class="p">]</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a>            <span class="p">}</span>
-<a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="p">)</span>
-<a id="__codelineno-0-244" name="__codelineno-0-244"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-245" name="__codelineno-0-245"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-246" name="__codelineno-0-246"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-247" name="__codelineno-0-247"></a>                <span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-0-248" name="__codelineno-0-248"></a>                    <span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span>
-<a id="__codelineno-0-249" name="__codelineno-0-249"></a>                    <span class="n">mirascope_langfuse_generation</span><span class="p">(),</span>
-<a id="__codelineno-0-250" name="__codelineno-0-250"></a>                <span class="p">]</span>
-<a id="__codelineno-0-251" name="__codelineno-0-251"></a>            <span class="p">}</span>
-<a id="__codelineno-0-252" name="__codelineno-0-252"></a>        <span class="p">)</span>
-<a id="__codelineno-0-253" name="__codelineno-0-253"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="sd">    @with_langfuse</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="sd">    class BookRecommender(OpenAICall):</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a><span class="sd">        prompt_template = &quot;Please recommend some {genre} books&quot;</span>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a><span class="sd">        genre: str</span>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">    recommender = BookRecommender(genre=&quot;fantasy&quot;)</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a><span class="sd">    response = recommender.call()  # this will automatically get logged with Langfuse</span>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a><span class="sd">    print(response.content)</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a>        <span class="bp">cls</span><span class="p">,</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a>        <span class="n">handle_before_call</span><span class="o">=</span><span class="n">handle_before_call</span><span class="p">,</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a>        <span class="n">handle_after_call</span><span class="o">=</span><span class="n">handle_after_call</span><span class="p">,</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>        <span class="n">decorator</span><span class="o">=</span><span class="n">observe</span><span class="p">(),</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a>    <span class="p">)</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>    <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="o">==</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>                <span class="s2">&quot;client_wrappers&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a>                    <span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">client_wrappers</span><span class="p">,</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a>                    <span class="s2">&quot;langfuse&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>                <span class="p">]</span>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a>            <span class="p">}</span>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a>        <span class="p">)</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>                <span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>                    <span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>                    <span class="n">mirascope_langfuse_generation</span><span class="p">(),</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>                <span class="p">]</span>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>            <span class="p">}</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>        <span class="p">)</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3644,7 +3650,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>

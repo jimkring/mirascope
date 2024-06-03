@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -3600,12 +3600,7 @@
 
           <details class="quote">
             <summary>Source code in <code>mirascope/logfire/logfire.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-277">277</a></span>
-<span class="normal"><a href="#__codelineno-0-278">278</a></span>
-<span class="normal"><a href="#__codelineno-0-279">279</a></span>
-<span class="normal"><a href="#__codelineno-0-280">280</a></span>
-<span class="normal"><a href="#__codelineno-0-281">281</a></span>
-<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-282">282</a></span>
 <span class="normal"><a href="#__codelineno-0-283">283</a></span>
 <span class="normal"><a href="#__codelineno-0-284">284</a></span>
 <span class="normal"><a href="#__codelineno-0-285">285</a></span>
@@ -3617,24 +3612,37 @@
 <span class="normal"><a href="#__codelineno-0-291">291</a></span>
 <span class="normal"><a href="#__codelineno-0-292">292</a></span>
 <span class="normal"><a href="#__codelineno-0-293">293</a></span>
-<span class="normal"><a href="#__codelineno-0-294">294</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-277" name="__codelineno-0-277"></a><span class="k">def</span> <span class="nf">with_logfire</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-278" name="__codelineno-0-278"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps a pydantic class with a Logfire span.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-279" name="__codelineno-0-279"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">handle_before_call</span><span class="p">,</span> <span class="n">handle_after_call</span><span class="p">)</span>
-<a id="__codelineno-0-280" name="__codelineno-0-280"></a>    <span class="n">instrumented_providers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span> <span class="s2">&quot;anthropic&quot;</span><span class="p">]</span>
-<a id="__codelineno-0-281" name="__codelineno-0-281"></a>    <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">in</span> <span class="n">instrumented_providers</span><span class="p">:</span>
-<a id="__codelineno-0-282" name="__codelineno-0-282"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
-<a id="__codelineno-0-283" name="__codelineno-0-283"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-284" name="__codelineno-0-284"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-285" name="__codelineno-0-285"></a>                    <span class="s2">&quot;client_wrappers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">client_wrappers</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">]</span>
-<a id="__codelineno-0-286" name="__codelineno-0-286"></a>                <span class="p">}</span>
-<a id="__codelineno-0-287" name="__codelineno-0-287"></a>            <span class="p">)</span>
-<a id="__codelineno-0-288" name="__codelineno-0-288"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-289" name="__codelineno-0-289"></a>        <span class="c1"># TODO: Use instrument instead when they are integrated into logfire</span>
-<a id="__codelineno-0-290" name="__codelineno-0-290"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
-<a id="__codelineno-0-291" name="__codelineno-0-291"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-292" name="__codelineno-0-292"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="n">mirascope_logfire</span><span class="p">()]}</span>
-<a id="__codelineno-0-293" name="__codelineno-0-293"></a>            <span class="p">)</span>
-<a id="__codelineno-0-294" name="__codelineno-0-294"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-282" name="__codelineno-0-282"></a><span class="k">def</span> <span class="nf">with_logfire</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps a pydantic class with a Logfire span.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span>
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a>        <span class="bp">cls</span><span class="p">,</span>
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a>        <span class="n">handle_before_call</span><span class="o">=</span><span class="n">handle_before_call</span><span class="p">,</span>
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a>        <span class="n">handle_after_call</span><span class="o">=</span><span class="n">handle_after_call</span><span class="p">,</span>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a>    <span class="p">)</span>
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a>    <span class="n">instrumented_providers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span> <span class="s2">&quot;anthropic&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a>    <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_provider</span> <span class="ow">in</span> <span class="n">instrumented_providers</span><span class="p">:</span>
+<a id="__codelineno-0-291" name="__codelineno-0-291"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-292" name="__codelineno-0-292"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a>                    <span class="s2">&quot;client_wrappers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">client_wrappers</span><span class="p">,</span> <span class="s2">&quot;logfire&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a>                <span class="p">}</span>
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a>            <span class="p">)</span>
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a>        <span class="c1"># TODO: Use instrument instead when they are integrated into logfire</span>
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a>            <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a>                <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="n">mirascope_logfire</span><span class="p">()]}</span>
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a>            <span class="p">)</span>
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3786,7 +3794,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>

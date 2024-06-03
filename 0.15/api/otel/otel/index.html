@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     <meta name="keywords" content="prompt engineering, prompt management, LLM, AI">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -3758,18 +3758,26 @@ The span processors to use, if None, a console exporter will be used.</p>
 <span class="normal"><a href="#__codelineno-0-340">340</a></span>
 <span class="normal"><a href="#__codelineno-0-341">341</a></span>
 <span class="normal"><a href="#__codelineno-0-342">342</a></span>
-<span class="normal"><a href="#__codelineno-0-343">343</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-332" name="__codelineno-0-332"></a><span class="k">def</span> <span class="nf">with_otel</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-332" name="__codelineno-0-332"></a><span class="k">def</span> <span class="nf">with_otel</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <a id="__codelineno-0-333" name="__codelineno-0-333"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps a pydantic class with a Logfire span.&quot;&quot;&quot;</span>
 <a id="__codelineno-0-334" name="__codelineno-0-334"></a>
 <a id="__codelineno-0-335" name="__codelineno-0-335"></a>    <span class="n">provider</span> <span class="o">=</span> <span class="n">get_tracer_provider</span><span class="p">()</span>
 <a id="__codelineno-0-336" name="__codelineno-0-336"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">TracerProvider</span><span class="p">):</span>
 <a id="__codelineno-0-337" name="__codelineno-0-337"></a>        <span class="n">configure</span><span class="p">()</span>
-<a id="__codelineno-0-338" name="__codelineno-0-338"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">handle_before_call</span><span class="p">,</span> <span class="n">handle_after_call</span><span class="p">)</span>
-<a id="__codelineno-0-339" name="__codelineno-0-339"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
-<a id="__codelineno-0-340" name="__codelineno-0-340"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
-<a id="__codelineno-0-341" name="__codelineno-0-341"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="n">mirascope_otel</span><span class="p">()]}</span>
-<a id="__codelineno-0-342" name="__codelineno-0-342"></a>        <span class="p">)</span>
-<a id="__codelineno-0-343" name="__codelineno-0-343"></a>    <span class="k">return</span> <span class="bp">cls</span>
+<a id="__codelineno-0-338" name="__codelineno-0-338"></a>    <span class="n">wrap_mirascope_class_functions</span><span class="p">(</span>
+<a id="__codelineno-0-339" name="__codelineno-0-339"></a>        <span class="bp">cls</span><span class="p">,</span>
+<a id="__codelineno-0-340" name="__codelineno-0-340"></a>        <span class="n">handle_before_call</span><span class="o">=</span><span class="n">handle_before_call</span><span class="p">,</span>
+<a id="__codelineno-0-341" name="__codelineno-0-341"></a>        <span class="n">handle_after_call</span><span class="o">=</span><span class="n">handle_after_call</span><span class="p">,</span>
+<a id="__codelineno-0-342" name="__codelineno-0-342"></a>    <span class="p">)</span>
+<a id="__codelineno-0-343" name="__codelineno-0-343"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;configuration&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-344" name="__codelineno-0-344"></a>        <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span>
+<a id="__codelineno-0-345" name="__codelineno-0-345"></a>            <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;llm_ops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">*</span><span class="bp">cls</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">llm_ops</span><span class="p">,</span> <span class="n">mirascope_otel</span><span class="p">()]}</span>
+<a id="__codelineno-0-346" name="__codelineno-0-346"></a>        <span class="p">)</span>
+<a id="__codelineno-0-347" name="__codelineno-0-347"></a>    <span class="k">return</span> <span class="bp">cls</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3921,7 +3929,7 @@ The span processors to use, if None, a console exporter will be used.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.code.link", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>
